@@ -117,6 +117,10 @@ body {
 /* End Home Styling Section */
 
 /* who we are */
+.who-we {
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
 .who-imag {
     width: 44%;
     display: inline-block;
@@ -167,6 +171,8 @@ ul li p {
 /* Our Location */
 .our-location {
     background-color: #F8F8F8;
+    margin-top: 70px;
+    margin-bottom: 50px;
 }
 .location-caption {
     width: 42%;
@@ -205,8 +211,8 @@ ul li p {
 }
 .baking {
     text-align: center;
-    /* width: 90%;
-    margin: auto; */
+    margin-top: 70px;
+    margin-bottom: 50px;
 }
 .baking .one, .two, .three {
     float: left;
@@ -228,6 +234,8 @@ ul li p {
 /* contact */
 .contact {
     background-color: #F8F8F8;
+    margin-top: 70px;
+    margin-bottom: 50px;
 }
 
 .contact-info {
@@ -274,7 +282,9 @@ ul li p {
 
 /* footer */
 .footer {
-    background-color: #403d38
+    background-color: #403d38;
+    margin-top: 70px;
+    margin-bottom: 50px;
 }
 
 .footer-info .about,
