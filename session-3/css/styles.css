@@ -1,0 +1,118 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+    font-family: "Bebas Neue", sans-serif;
+}
+
+/* Home Section */
+
+.clr {
+  clear: both;
+}
+
+div.home {
+  background-image: url("../img/bg-food.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+div.home div.navbar {
+    color:white;
+    padding-block:15px;
+}
+
+div.home div.navbar div.container {
+    width:80%;
+    margin-inline: auto;
+}
+
+div.home div.navbar div.navbar-logo {
+    float:left;
+    color:orange;
+}
+
+div.home div.home-layer div.navbar-link {
+    float: right;
+    font-size: 24px;
+}
+
+div.home div.home-layer div.navbar-link ul {
+    list-style: none;
+}
+
+div.home div.home-layer div.navbar-link ul li {
+    float: left;
+    padding-inline:20px;
+}
+
+div.home div.home-layer div.navbar-link ul li a {
+    text-decoration: none;
+    color:white;
+}
+
+div.home div.home-layer {
+    overflow: auto;
+    background-color:rgba(0, 0, 0, 0.7);
+    height:100%;
+}
+
+div.home div.home-content {
+  text-align: center;
+  margin-top: 200px;
+  color:white;
+}
+
+div.home div.home-content h1 {
+    color: orange;
+    margin-block: 15px;
+    font-size:60px;
+    padding-block:20px;
+}
+
+div.home div.home-content button {
+    padding:15px 30px;
+    background-color:white;
+    border-radius:35px;
+    border: 3px solid orange;
+    margin-top:20px;
+}
+
+
+/* Menu Items Section */
+
+div.menu div.container {
+  width: 90%;
+  text-align: center;
+  margin-inline: auto;
+}
+
+div.menu h2 {
+    text-align:center;
+    font-size: 32px;
+}
+
+div.menu h2 span {
+    font-size: 60px;
+    color:orange;
+}
+
+div.menu div.item {
+  width: 25%;
+  float: left;
+  padding-inline: 20px;
+  box-sizing: border-box;
+}
+div.menu div.item h3 {
+    font-size:24px;
+}
+
+div.menu div.item img {
+    width:100%;
+    border-radius: 50%;
+    border: 5px solid orange;
+}
+

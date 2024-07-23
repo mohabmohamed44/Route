@@ -1,0 +1,35 @@
+.image-item {
+    float:left;
+    width:25%;
+}
+
+.image-item img {
+    display: block;
+    width: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.clear-fix {
+    clear:both;
+}
+
+.section2 {
+    text-align: center;
+}
+
+.section2 h2 {
+    color: darkblue;
+}
+.section2 .item {
+    float: left;
+    width:33.33%;
+}
+
+.container {
+    width:80%;
+    margin: 10px auto;
+}
