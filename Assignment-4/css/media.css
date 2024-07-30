@@ -68,10 +68,6 @@
         width: 100%;
         position: relative;
         transform: none;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
     }
     .profile-overlay
     {
@@ -87,10 +83,6 @@
         -webkit-transition: all 0.5s ease 0s;
         transition: all 0.5s ease 0s;
         transform: translate(0,0);
-        -webkit-transform: translate(0,0);
-        -moz-transform: translate(0,0);
-        -ms-transform: translate(0,0);
-        -o-transform: translate(0,0);
 }
     .about-profile:hover .profile-overlay {
         height: 100%;
@@ -300,10 +292,6 @@
         width: 100%;
         position: relative;
         transform: none;
-        -webkit-transform: none;
-        -moz-transform: none;
-        -ms-transform: none;
-        -o-transform: none;
     }
     .profile-overlay
     {
@@ -319,10 +307,6 @@
         -webkit-transition: all 0.5s ease 0s;
         transition: all 0.5s ease 0s;
         transform: translate(0,0);
-        -webkit-transform: translate(0,0);
-        -moz-transform: translate(0,0);
-        -ms-transform: translate(0,0);
-        -o-transform: translate(0,0);
     }  
     .about-profile:hover .profile-overlay {
         height: 100%;
@@ -509,10 +493,6 @@
         width: 50%;
         position: relative;
         transform: translatex(-50px);
-        -webkit-transform: translatex(-50px);
-        -moz-transform: translatex(-50px);
-        -ms-transform: translatex(-50px);
-        -o-transform: translatex(-50px);
     }
     .profile-overlay
     {
@@ -523,14 +503,6 @@
         padding-top: 0px;
         border-radius: 5px;
         transform: translate(20px,20px);
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-        -webkit-transform: translate(20px,20px);
-        -moz-transform: translate(20px,20px);
-        -ms-transform: translate(20px,20px);
-        -o-transform: translate(20px,20px);
     }
     .about-caption
     {
