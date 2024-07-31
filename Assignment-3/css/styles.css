@@ -102,6 +102,7 @@ body {
     margin-top: 30px;
     color: #FFF;
     font-size: 17px;
+    cursor: pointer;
 }
 .btn-brown {
     background-color: #8e7754;
