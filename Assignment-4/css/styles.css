@@ -475,7 +475,7 @@ h1,h2,h3,h4,h5, h6 {
 {
     text-align: center;
 }
-.portfolio-links button
+.portfolio-links a
 {
     background-color: white;
     border: none;
@@ -487,9 +487,13 @@ h1,h2,h3,h4,h5, h6 {
     text-transform: uppercase;
     cursor: pointer;
 }
-.portfolio-links button:first-child
+.portfolio-links a:first-child
 {
     color: #ff305b;
+}
+
+.portfolio-links a:hover {
+    color:#ff305b;
 }
 .portfolio-box
 {
