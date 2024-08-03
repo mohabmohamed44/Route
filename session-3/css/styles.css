@@ -66,11 +66,19 @@ div.home div.home-content {
   color:white;
 }
 
+div.home div.home-content div.home-content-cap {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
 div.home div.home-content h1 {
     color: orange;
     margin-block: 15px;
     font-size:60px;
     padding-block:20px;
+    text-transform: capitalize;
 }
 
 div.home div.home-content button {
