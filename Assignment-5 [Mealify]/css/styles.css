@@ -1,0 +1,994 @@
+/* Shared Styles */
+:root {
+  --main-color: #37373f;
+  --second-color: #7f7f90;
+  --basic-color: white;
+  --default-color: #212529;
+  --color-grey: #eeeeee;
+  --default-font: "Open Sans", system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-primary: "Amatic SC", sans-serif;
+  --font-secondary: "Inter", sans-serif;
+  --secondary-color: #ce1212;
+  --primary-color: #e61414;
+  --color-light-grey: #252525;
+  --animation-duration: 400ms;
+  --color: #f5f5f5;
+  --paragraph-color: #4f4f5a;
+}
+
+/* Dark mode modules */
+:root :has(#mode:checked) {
+  --main-color: #e0e0e0;
+  --second-color: #a0a0a0;
+  --basic-color: #202020;
+  --default-color: #e0e0e0;
+  --color-grey: #333333;
+  --primary-color: #e
+  --secondary-color: #ff3a3a;
+  --paragraph-color: #b0b0b0;
+  --icon-color: #c17e1f;
+  --light-mode: #171717;
+  --color1: #fff;
+  --section-color: #252525;
+  --selection-color: #171717;
+  --background-hover-color: #d78c23;
+}
+
+
+/* Update font colors for dark mode */
+body:has(#mode:checked) {
+  color: #fff;
+  background-color: #202020;
+}
+
+body:has(#mode:checked) .navbar {
+  background-color: #171717;
+  box-shadow: 0px 0px 14px 0px #ffffff1b;
+}
+
+body:has(#mode:checked) .navbar a.nav-logo {
+  color: #fff;
+}
+
+body:has(#mode:checked) .navbar ul.nav-links {
+  color: var(--color1);
+}
+
+body:has(#mode:checked) .navbar ul.nav-links a {
+  color: var(--second-color);
+}
+body:has(#mode:checked) .navbar ul.nav-links a:hover {
+  color: var(--color1);
+  transition: all 2s;
+}
+body:has(#mode:checked) div.navbar ul.nav-links a::after {
+  background-color: var(--icon-color);
+}
+
+body:has(#mode:checked) div.navbar div.container a.nav-logo::after{
+  background-color: var(--icon-color);
+}
+
+
+body:has(#mode:checked) .navbar ul.nav-links a.active {
+  color: var(--icon-color);
+}
+
+body:has(#mode:checked) .home-page {
+  background-color: var(--color-light-grey);
+}
+
+body:has(#mode:checked) .text-home-page h2,
+body:has(#mode:checked) .text-home-page p {
+  color: #fff;
+}
+
+body:has(#mode:checked) .book-table {
+  background-color: var(--icon-color);
+  color: #fff;
+}
+
+body:has(#mode:checked) .book-table:hover {
+  background-color: var(--background-hover-color);
+}
+
+body:has(#mode:checked) .watch-home-page {
+  color: #fff;
+}
+
+
+
+body:has(#mode:checked) .watch-home-page:hover * {
+  color: var(--background-hover-color)
+}
+
+body:has(#mode:checked):not(body:has(:target)) li a[href="#home"],
+body:has(#mode:checked):has(#home:target) li a[href="#home"],
+body:has(#mode:checked):has(#contact:target) li a[href="#contact"],
+body:has(#mode:checked):has(#gallery:target) li a[href="#gallery"],
+body:has(#mode:checked):has(#chefs:target) li a[href="#chefs"] {
+  color: #fff;
+}
+
+
+body:has(#mode:checked) .button-radius {
+  background-image: linear-gradient(to right, var(--icon-color, #c17e1f) 0 50%, transparent 50% 100%);
+}
+
+body:has(#mode:checked) .button-radius i {
+  background-color: var(--basic-color);
+  color: var(--default-color);
+}
+
+body:has(#mode:checked) .chefs {
+  background-color: var(--light-mode);
+}
+body:has(#mode:checked) .gallery {
+  background-color: var(--default-color);
+}
+
+body:has(#mode:checked) .gallery .main-title span {
+  color: var(--icon-color);
+}
+
+body:has(#mode:checked) .card-chif {
+  background-color: var(--light-mode);
+}
+
+body:has(#mode:checked) .card-chif h3,
+body:has(#mode:checked) .card-chif p {
+  color: #fff;
+}
+
+body:has(#mode:checked) .gallery {
+  background-color: var(--section-color);
+}
+
+body:has(#mode:checked) .header-chif h2,
+body:has(#mode:checked) .header-chif p,
+body:has(#mode:checked) .header-gallary h2,
+body:has(#mode:checked) .header-gallary p {
+  color: #fff;
+}
+
+body:has(#mode:checked) .header-chif span {
+    color: var(--icon-color);
+}
+
+body:has(#mode:checked) .layer .layer-content h3 {
+  color: #fff;
+}
+
+/* Scrollbar Styles for Dark Mode */
+body:has(#mode:checked)::-webkit-scrollbar-track {
+  background: #333333;
+}
+
+body:has(#mode:checked)::-webkit-scrollbar-thumb {
+  background-color: #666666;
+  border: 4px solid #333333;
+}
+
+body:has(#mode:checked)  div.main-title span {
+  color: var(--icon-color);
+}
+
+body:has(#mode:checked)  div.contact div.details div.info {
+  background-color: var(--light-mode);
+}
+
+body:has(#mode:checked) div.contact div.details div.info div.icon {
+  background-color: var(--icon-color);
+}
+
+body:has(#mode:checked) div.contact form {
+  background-color: var(--light-mode);
+}
+
+/* body:has(#mode:checked) div.contact form input,textarea  {
+  background-color: var(--light-mode);
+} */
+
+
+body:has(#mode:checked) div.contact form .send-message {
+  background-color: var(--icon-color);
+}
+
+body:has(#mode:checked) div.contact form .send-message:hover {
+  background-color: var(--background-hover-color);
+}
+
+body:has(#mode:checked) div.contact form input:focus,
+body:has(#mode:checked) div.contact form textarea:focus {
+  outline: none;
+  border-color: var(--icon-color);
+}
+
+
+body:has(#mode:checked) div.footer div.subscription div.subscription-info div.subscription-form .btn-subscription
+{
+  background-color: var(--icon-color);
+}
+
+
+body:has(#mode:checked) div.footer div.subscription div.subscription-info div.subscription-form .btn-subscription:hover {
+  background-color: var(--background-hover-color);
+}
+
+body:has(#mode:checked) div.footer div.contact-details ul li i {
+  color: var(--icon-color);
+}
+
+.navbar,
+.navbar a.nav-logo,
+.navbar ul.nav-links,
+.navbar ul.nav-links a,
+.text-home-page h2,
+.text-home-page p,
+.book-table,
+.watch-home-page,
+.button-radius i,
+.card-chif,
+.card-chif h3,
+.card-chif p,
+.header-chif h2,
+.header-chif p,
+.header-gallary h2,
+.header-gallary p,
+.layer .layer-content h3,
+.home-page,
+.chefs,
+.gallery, div.contact form .send-message, 
+div.footer div.subscription div.subscription-info div.subscription-form .btn-subscription {
+  transition: color var(--animation-duration),
+    background-color var(--animation-duration),
+    box-shadow var(--animation-duration);
+}
+
+/* End Dark Modules */
+
+
+
+
+/* Initially hide the sun icon (light mode icon) */
+.light-mode {
+  display: none;
+}
+
+body:has(#mode:checked) .dark-mode {
+  display: none;
+}
+
+body:has(#mode:checked) .light-mode {
+  display: inline-block;
+}
+
+/* Style for the mode switch container */
+.mode-switch {
+  cursor: pointer;
+}
+
+/* Style for the icons */
+.mode-switch i {
+  font-size: 25px;
+  transition: color var(--animation-duration);
+  cursor: pointer;
+}
+
+/* Color for the icons in light and dark mode */
+.mode-switch i {
+  color: var(--main-color);
+}
+
+body:has(#mode:checked) .mode-switch i {
+  color: #fff;
+}
+
+
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow: hidden;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-secondary);
+}
+
+body {
+  font-family: var(--default-font);
+  color: var(--default-color);
+  overflow-x: hidden !important;
+}
+
+ul {
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.container {
+  width: 80%;
+  margin-inline: auto;
+}
+
+/* End of Shared Styles */
+
+/* Scrollbar Styles */
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 12px;
+  border: 3px solid #ffffff;
+}
+
+/* Rest of the existing CSS code remains unchanged */
+
+/* Navbar Styles */
+
+div.navbar {
+  background-color: white;
+  position: fixed;
+  z-index: 9999;
+  box-shadow: 0px 0px 14px 0px #0000001b;
+  width: 100%;
+}
+
+div.navbar div.container {
+  padding: 25px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+div.navbar div.container a.nav-logo {
+  font-size: 30;
+  font-weight: 600;
+  color: var(--default-color);
+  font-family: var(--default-font);
+  position: relative;
+}
+
+div.navbar div.container a.nav-logo::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  bottom: 5px;
+  left: 103px;
+}
+
+div.navbar ul.nav-links {
+  display: flex;
+  margin: auto;
+  --inline-gap: 5px;
+  --block-gap: 15px;
+  color: var(--second-color);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+div.navbar ul.nav-links a {
+  position: relative;
+  padding: var(--inline-gap) var(--block-gap);
+  transition: color var(--animation-duration);
+}
+
+div.navbar ul.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: var(--inline-gap);
+  width: 0;
+  height: 2px;
+  background-color: var(--secondary-color);
+  transition: width var(--animation-duration);
+}
+
+body:not(body:has(:target)) li a[href="#home"]::after,
+body:has(#home:target) li a[href="#home"]::after,
+body:has(#contact:target) li a[href="#contact"]::after,
+body:has(#gallery:target) li a[href="#gallery"]::after,
+body:has(#chefs:target) li a[href="#chefs"]::after,
+div.navbar ul.nav-links a:hover::after {
+  width: calc(100% - (var(--inline-gap) * 2));
+}
+
+body:not(body:has(:target)) li a[href="#home"],
+body:has(#home:target) li a[href="#home"],
+body:has(#contact:target) li a[href="#contact"],
+body:has(#gallery:target) li a[href="#gallery"],
+body:has(#chefs:target) li a[href="#chefs"] {
+  color: #000;
+}
+
+div.mode-switch i {
+  cursor: pointer;
+  font-size: 25px;
+}
+div.mode-switch label.menu-bars {
+  cursor: pointer;
+  font-size: 25px;
+}
+
+/* End of Navbar Styling */
+
+/* Start Home Styling */
+
+.home-page {
+  background-color: var(--color-grey);
+  padding: 120px 0 45px;
+}
+
+.home-page .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 64px;
+}
+
+.text-home-page {
+  flex: 1;
+  max-width: 600px;
+}
+
+.text-home-page h2 {
+  color: var(--main-color);
+  font-family: var(--font-primary);
+  font-size: 60px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  width: 68%;
+}
+
+.text-home-page p {
+  color: var(--second-color);
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+
+.photo-home-page {
+  flex: 1;
+  max-width: 500px;
+}
+
+.photo-home-page img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(4px 4px 9px rgba(0, 0, 0, 0.3));
+  transition: filter var(--animation-duration);
+}
+
+.photo-home-page img:hover {
+  animation: shake 0.5s infinite;
+  filter: drop-shadow(4px 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.btns-home-page {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.book-table {
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--basic-color);
+  transition: background-color var(--animation-duration);
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 0px 100vh 100vh;
+}
+
+.book-table:hover {
+  background-color: #a50f0f;
+}
+
+.flex-watch-home {
+  display: flex;
+  align-items: center;
+}
+
+.watch-home-page {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--main-color);
+  text-decoration: none;
+  transition: color var(--animation-duration);
+}
+
+.button-radius {
+  background-image: linear-gradient(to right, var(--primary-color) 0 50%, transparent 50% 100%);
+  border-radius: 50%;
+  height: 56px;
+  width: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-radius i {
+  background-color: var(--basic-color);
+  border-radius: 50%;
+  font-size: 17px;
+  padding: 12px;
+  color: var(--default-color);
+}
+
+.watch-home-page:hover * {
+  color: var(--secondary-color);
+}
+
+.flex-wach-home * {
+  transition: 0.3s;
+}
+
+/* End of Home Styling */
+
+/* Keyframes for Shaking */
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+/* End of Home Styling page */
+
+/* Start Chef Styling */
+.chefs {
+  padding: 55px 0;
+}
+.parent-cards-chif {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 35px;
+}
+.card-chif {
+  background-color: #ffffff;
+  transition: 0.4s;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 33.33%;
+  text-align: center;
+}
+
+.header-chif {
+  text-align: center;
+  padding: 25px 0;
+}
+
+.header-chif h2 {
+  color: var(--second-color);
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.header-chif p {
+  color: var(--default-color);
+  font-family: var(--font-primary);
+  font-size: 50px;
+}
+.header-chif span {
+  color: var(--primary-color);
+}
+.card-chif {
+  position: relative;
+}
+.card-chif .layer-chif {
+  position: absolute;
+  top: 20px;
+  right: -50%;
+  background-color: rgba(255, 255, 255, 0.274);
+  border-radius: 5%;
+  transition: 0.8s;
+}
+
+:has(#mode:checked) .chefs .parent-cards-chif .card-chif .wave-img img {
+  content: url("../images/team-shape-dark.svg");
+}
+
+.card-chif .layer-chif ul li {
+  padding: 10px 15px;
+}
+.card-chif .layer-chif ul li i {
+  color: var(--second-color);
+  font-size: 18px;
+  transition: 0.5s;
+}
+.card-chif .layer-chif ul li i:hover {
+  color: var(--main-color);
+}
+.card-chif:hover .layer-chif {
+  right: 10px;
+}
+.wave-img {
+  position: relative;
+}
+.wave-img img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.card-chif:hover {
+  transform: scale(1.1);
+}
+.parent-cards-chif .card-chif h3 {
+  color: var(--default-color);
+  font-family: var(--font-secondary);
+  font-size: 18px;
+}
+
+.parent-cards-chif .card-chif p {
+  color: var(--second-color);
+  font-family: var(--font-secondary);
+  font-size: 14px;
+  padding: 5px 0;
+  width: 85%;
+  margin: auto;
+  line-height: 20px;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.parent-cards-chif .card-chif img {
+  width: 100%;
+  border-radius: 7px;
+}
+/* End Chef Styling */
+
+
+/* Start Gallery Styling */
+
+.main-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.main-title h2 {
+  color: #7f7f9b;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: var(--font-secondary);
+}
+.main-title p {
+  font-family: var(--font-primary);
+  font-size: 50px;
+}
+.main-title p span {
+  color: #e61414;
+}
+
+.gallery {
+  padding: 100px 0 0;
+  background-color: #eee;
+}
+.gallery .gallery-photos {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  height: 1165px;
+}
+.gallery .gallery-photos .image {
+  position: relative;
+  border: 4px solid #fff;
+  width: calc((100% - 40px) / 3);
+  overflow: hidden;
+}
+.gallery .gallery-photos .image img {
+  width: 100%;
+}
+.gallery .gallery-photos .image .layer {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  background-color: #00000096;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: var(--animation-duration);
+}
+.gallery .gallery-photos .image:hover .layer {
+  top: 0;
+}
+/* End of Gallery Styling */
+
+
+/* Start of Contact Us Styling */
+
+
+
+div.contact {
+  padding: 100px 0px;
+}
+div.contact iframe {
+  width: 100%;
+  height: 350px;
+  margin-bottom: 25px;
+}
+div.contact div.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+div.contact div.details div.info {
+  width: 49%;
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  background-color: #f5f5f5;
+}
+div.contact div.details div.info div.icon {
+  min-width: 50px;
+  min-height: 50px;
+  background-color: #ce1212;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+div.contact div.details div.info div.icon i {
+  font-size: 18px;
+  color: #fff;
+}
+div.contact div.details div.info .address-contact h3 {
+  color: #7d7d7d;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+div.contact form {
+  width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 0 30px #00000014;
+}
+div.contact form input,
+div.contact form textarea {
+  padding: 15px;
+  border: 2px solid #eee;
+  color: #212529;
+  transition: var(--animation-duration);
+}
+div.contact form input:focus,
+div.contact form textarea:focus {
+  outline: none;
+  border-color: #ce1212;
+}
+div.contact form .input-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+div.contact form .input-group input {
+  flex-basis: 49%;
+}
+div.contact form textarea {
+  resize: none;
+}
+div.contact form .send-message {
+  padding: 12px 40px;
+  font-size: 15px;
+  width: fit-content;
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: var(--animation-duration);
+}
+div.contact form button.send-message:hover {
+  background-color: var(--primary-color);
+}
+
+/* End of Contact Us Styling */
+
+
+/* Start footer Styling */
+
+div.footer {
+  padding: 40px 0;
+  background-image: linear-gradient(#0009, #0009),
+    url(../images/textured-metal-background.jpg);
+  color: #fff;
+  background-size: contain;
+}
+div.footer div.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+div.footer div.about {
+  width: 33.3333%;
+}
+div.footer div.about div.logo {
+  display: flex;
+  gap: 10px;
+}
+div.footer div.about div.logo img {
+  width: 32px;
+  height: 32px;
+}
+div.footer div.about .logo h2 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+}
+div.footer div.about .logo h2::after {
+  content: ".";
+  color: #ce1212;
+}
+div.footer div.about p {
+  margin: 10px 0;
+}
+div.footer div.about h3 {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 2px solid #ddd6;
+  margin-bottom: 10px;
+}
+div.footer div.about .social-media {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+div.footer div.about .social-media li i {
+  font-size: 24px;
+  color: #fff;
+}
+
+div.footer div.subscription {
+  width: 33.3333%;
+}
+div.footer div.subscription div.subscription-info p {
+  margin: 10px 0;
+}
+div.footer div.subscription div.subscription-info div.subscription-form {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+div.footer div.subscription div.subscription-info div.subscription-form input {
+  padding: 10px;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+}
+div.footer div.subscription div.subscription-info div.subscription-form .btn-subscription {
+  background-color: #e61414;
+  color: #fff;
+  border: none;
+  padding: 10px;
+}
+div.footer div.subscription div.quick-links ul {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+div.footer div.subscription div.quick-links li {
+  width: 45%;
+  padding: 5px;
+  margin-right: 5px;
+  transition: var(--animation-duration);
+}
+div.footer div.subscription div.quick-links li:hover {
+  transform: translateX(10px);
+  background-color: #222;
+}
+div.footer div.subscription div.quick-links li a {
+  color: #fff;
+}
+div.footer div.subscription div.quick-links li a i {
+  margin-right: 5px;
+}
+
+div.footer div.subscriptio {
+  width: 33.3333%;
+}
+div.footer div.contact-details h3 {
+  margin-bottom: 10px;
+}
+div.footer div.contact-details ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+div.footer div.contact-details ul li i {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  color: #ce1212;
+  margin-right: 8px;
+}
+div.footer div.contact-details ul li a {
+  color: #fff;
+  display: inline-block;
+}
+
+
