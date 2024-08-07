@@ -70,6 +70,9 @@
   .home-page .container {
     flex-direction: column;
   }
+  .book-table {
+    border-radius: 100px;
+  }
   .photo-home-page {
     width: 100%;
     order: 1;
@@ -116,6 +119,7 @@
   .book-table {
     font-size: 14px;
     padding: 8px 20px;
+    border-radius: 100px;
   }
   .button-radius {
     height: 48px;
