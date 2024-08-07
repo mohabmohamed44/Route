@@ -276,6 +276,31 @@
   .gallery .gallery-photos .image {
     width: 100%;
   }
+
+  div.gallery .pizza {
+    order:1;
+  }
+  div.gallery .burger {
+    order:2;
+  }
+  div.gallery .pizza-slices {
+    order: 3;
+  }
+
+  div.gallery .omelette{
+    order: 4;
+  }
+  div.gallery .steak {
+    order: 5;
+  }
+  div.gallery .fried {
+    order:6;
+  }
+
+  div.gallery .kofta {
+    order:7;
+  }
+
 }
 
 /* Media Queries for Contact */
