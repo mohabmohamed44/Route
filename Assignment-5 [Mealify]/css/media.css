@@ -26,6 +26,7 @@
 }
 
 
+/* Home Page Media Queries */
 
 @media screen and (max-width: 1400px) {
   .home-page {
@@ -168,7 +169,7 @@
 }
 
 
-/* Media Queries */
+/* Media Queries for Chef Section */
 
 @media screen and (max-width: 1400px) {
   .chefs {
@@ -252,6 +253,7 @@
   }
 }
 
+/* Media Queries for Gallery */
 
 @media screen and (max-width: 1200px) {
   .gallery .gallery-photos {
@@ -272,6 +274,7 @@
   }
 }
 
+/* Media Queries for Contact */
 
 @media screen and (max-width: 1202px) {
   div.contact form div.input-group input {
@@ -296,7 +299,7 @@
 }
 
 
-/* footer */
+/* Media Queries for footer */
 
 @media screen and (max-width: 1200px) {
   div.footer div.subscription div.quick-links ul {
