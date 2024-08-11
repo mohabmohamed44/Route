@@ -12,6 +12,7 @@
   --color-9: #ffc80a;
   --grey-degree: #333333;
   --color-10: #9FA3A7;
+  --blue-degree: #93B6B7;
   --main-font: "Arvo", serif;
   --second-font: "Montserrat", sans-serif;
   --third-font: "Open Sans", sans-serif;
@@ -238,7 +239,7 @@ p.gray {
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  background-color: var(--color-10);
+  background-color: var(--blue-degree);
   background-image: url("../img/tablet-bg.png");
   background-size: 80%;
   background-repeat: no-repeat;
