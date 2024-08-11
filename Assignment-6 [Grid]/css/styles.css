@@ -1,0 +1,399 @@
+:root {
+  --color-1: #f05638;
+  --color-2: #38d5f4;
+  --color-3: #8f76bc; /* 188 */
+  --color-4: #8166b0;
+  --color-5: #93b6b7;
+  --color-6: #2c2c2c;
+  --color-7: #f7f8f9;
+  --color-8: #fff;
+  --green-degree: #7BC424;
+  --dark-color: black;
+  --color-9: #ffc80a;
+  --grey-degree: #333333;
+  --color-10: #9FA3A7;
+  --main-font: "Arvo", serif;
+  --second-font: "Montserrat", sans-serif;
+  --third-font: "Open Sans", sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--third-font);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(3, 450px) calc(450px / 2);
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "phone phone learn-more learn-more"
+    "keyboard monitor monitor floppy"
+    "joystick tablet tablet floppy"
+    "twitter experience tv tv";
+}
+
+img {
+  width: 100%;
+}
+
+.caption-detail,
+.mini-caption-detail {
+  text-transform: uppercase;
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.caption-detail {
+  color: var(--color-10);
+  font-size: 12px;
+}
+
+.mini-caption-detail {
+  color: white;
+  font-size: 8px;
+}
+
+a {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+span.arrow {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Arvo, sans-serif;
+  color:var(--grey-degree);
+  margin: 15px 0px;
+  font-weight: normal;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+p.gray {
+  font-family: "Open Sans", sans-serif;
+  color: var(--color-10);
+  font-size: 14px;
+  line-height: 25px;
+}
+
+.learn-more,
+.keyboard,
+.joystick,
+.floppy-disk,
+.floppy-disk .background,
+.phone,
+.experience,
+.twitter,
+.twitter .background,
+.tablet,
+.tv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.phone {
+  justify-content: space-around;
+  grid-area: phone;
+  padding-top: 70px;
+}
+
+.phone h3 {
+  font-size: 22px;
+}
+
+.phone img {
+  width: max(200px, min(25%, 35%));
+  align-self: flex-end;
+}
+
+.phone .left {
+  width: 29%;
+}
+
+
+.learn-more {
+  grid-area: learn-more;
+  background-color: rgb(247, 248, 249);
+}
+
+.learn-more .inner {
+  text-align: center;
+  width: 50%;
+}
+
+.learn-more h1 {
+  font-size: 48px;
+}
+
+.learn-more a {
+  color: rgb(39, 185, 194);
+  font-size: 14px;
+  text-transform: none;
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+
+.keyboard {
+  grid-area: keyboard;
+  flex-direction: column;
+  background-color: var(--color-1);
+  text-align: center;
+  padding: 30px;
+}
+
+.keyboard h3 {
+  color:var(--color-8);
+  font-weight: 700;
+  max-width: 70%;
+}
+
+.keyboard img {
+  width: 75%;
+}
+
+.keyboard a {
+  color: var(--color-9);
+}
+
+
+
+.monitor {
+  padding-top: 80px;
+  display: flex;
+  justify-content: flex-end;
+  text-align: start;
+  grid-area: monitor;
+  position: relative;
+}
+
+.monitor .left {
+  width: 30%;
+  margin: 10px auto 0 auto;
+}
+
+
+.monitor img {
+  object-position: right;
+  position: absolute;
+  width: 40%;
+  bottom: 0;
+  left: -10%;
+}
+
+.monitor a {
+  color: rgb(39, 185, 194);
+}
+
+.monitor p {
+  max-width: 80%;
+  margin-bottom: 20px;
+}
+
+.monitor .right {
+  width: 50%;
+}
+
+.joystick {
+  flex-direction: column;
+  position: relative;
+  grid-area: joystick;
+}
+
+.joystick img {
+  width: 60%;
+  text-align: center;
+  position: relative;
+  left: -6%;
+}
+
+.joystick a {
+  color: var(--color-2);
+}
+
+
+
+.tablet {
+  grid-area: tablet;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  background-color: var(--color-10);
+  background-image: url("../img/tablet-bg.png");
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.tablet h3 {
+  font-weight: bold;
+  color: white;
+  padding-bottom: 30px;
+  max-width: 30%;
+  text-align: center;
+}
+
+.tablet .mini-caption-detail {
+  background-color: rgb(250, 104, 79);
+  border-radius: 5px;
+  position: absolute;
+  padding: 5px;
+  left: 2%;
+  top: 4%;
+}
+
+.tablet img {
+  width: 90%;
+  position: relative;
+  right: 13%;
+}
+
+
+
+.floppy-disk {
+  grid-area: floppy;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(143, 118, 188);
+  padding: 0 50px;
+  color: white;
+}
+
+.floppy-disk h2 {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: Arvo, sans-serif;
+  margin-top: 30px;
+}
+
+.floppy-disk .background {
+  background-color: var(--color-4);
+  border-radius: 50%;
+  width: 370px;
+  height: 370px;
+  flex-direction: column;
+}
+
+.floppy-disk .background img {
+  width: 60%;
+}
+
+.floppy-disk .background .caption-detail {
+  color: white;
+  margin: 20px 0;
+}
+
+.floppy-disk p {
+  max-width: 80%;
+  line-height: 26px;
+  font-size: 14px;
+}
+
+.floppy-disk .mini-caption-detail {
+  font-size: 10px;
+}
+
+.floppy-disk .tag {
+  background-color: rgba(255, 255, 255, 0.08);
+  width: 30%;
+  line-height: 25px;
+  border-radius: 15px;
+  margin: auto;
+}
+
+.floppy-disk .tag img {
+  width: 12px;
+}
+
+.floppy-disk button {
+  margin-top: 30px;
+  border: 0px;
+  background-color: var(--color-9);
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.floppy-disk button a {
+  color: black;
+}
+
+
+.twitter {
+  grid-area: twitter;
+  background-color: #38d5f4;
+}
+
+.twitter h3 {
+  color: white;
+}
+
+.twitter img {
+  width: 20%;
+}
+
+.twitter .background {
+  margin: auto;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #35cfed;
+  width: calc(450px / 2);
+  height: calc(450px / 2);
+}
+
+
+.experience {
+  grid-area: experience;
+  flex-direction: column;
+  background-color: #f7f8f9;
+}
+
+.experience .heading-3 {
+    width: 70%;
+    text-align: center;
+}
+
+.experience .mini-caption-detail {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background-color: var(--green-degree);
+}
+
+
+.tv {
+  background-color: var(--color-6);
+  grid-area: tv;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.tv h3 {
+  color: white;
+  max-width: 30%;
+}
+
+.tv img {
+  width: 30%;
+  object-fit: contain;
+}
