@@ -1,6 +1,6 @@
 :root {
   --color-1: #f05638;
-  --color-2: #38d5f4;
+  --color-2: #38d5f4; 
   --color-3: #8f76bc; /* 188 */
   --color-4: #8166b0;
   --color-5: #93b6b7;
@@ -13,6 +13,7 @@
   --grey-degree: #333333;
   --color-10: #9FA3A7;
   --blue-degree: #93B6B7;
+  --lightblue-degree: #35cfed;
   --main-font: "Arvo", serif;
   --second-font: "Montserrat", sans-serif;
   --third-font: "Open Sans", sans-serif;
@@ -33,7 +34,7 @@ body {
   grid-template-columns: repeat(4,1fr);
   grid-template-rows: repeat(3, 450px) calc(450px / 2);
   gap: 0px 0px;
-  grid-auto-flow: row;
+  /* grid-auto-flow: row; */
   grid-template-areas:
     "phone phone learn-more learn-more"
     "keyboard monitor monitor floppy"
@@ -134,7 +135,7 @@ p.gray {
 
 .learn-more {
   grid-area: learn-more;
-  background-color: rgb(247, 248, 249);
+  background-color: var(--color-7);
 }
 
 .learn-more .inner {
@@ -147,7 +148,7 @@ p.gray {
 }
 
 .learn-more a {
-  color: rgb(39, 185, 194);
+  color: var(--color-2);
   font-size: 14px;
   text-transform: none;
   font-weight: normal;
@@ -203,7 +204,7 @@ p.gray {
 }
 
 .monitor a {
-  color: rgb(39, 185, 194);
+  color: var(--color-2);
 }
 
 .monitor p {
@@ -255,7 +256,7 @@ p.gray {
 }
 
 .tablet .mini-caption-detail {
-  background-color: rgb(250, 104, 79);
+  background-color: var(--color-1);
   border-radius: 5px;
   position: absolute;
   padding: 5px;
@@ -275,7 +276,7 @@ p.gray {
   grid-area: floppy;
   flex-direction: column;
   text-align: center;
-  background-color: rgb(143, 118, 188);
+  background-color: var(--color-3);
   padding: 0 50px;
   color: white;
 }
@@ -358,7 +359,7 @@ p.gray {
   flex-direction: column;
   text-align: center;
   border-radius: 50%;
-  background-color: #35cfed;
+  background-color: var(--lightblue-degree);
   width: calc(450px / 2);
   height: calc(450px / 2);
 }

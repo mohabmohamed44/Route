@@ -1,0 +1,275 @@
+@media (max-width: 1200px) {
+  .container {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .floppy-disk .background {
+    width: 320px;
+    height: 320px;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+  h2 {
+    font-size: 28px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+}
+
+/* Medium screens (Tablets, 992px and up) */
+@media (max-width: 992px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+      "phone phone learn-more"
+      "keyboard monitor monitor"
+      "joystick tablet floppy"
+      "twitter experience tv";
+  }
+
+  .phone,
+  .learn-more,
+  .keyboard,
+  .monitor,
+  .joystick,
+  .tablet,
+  .floppy-disk,
+  .twitter,
+  .experience,
+  .tv {
+    padding: 20px;
+  }
+
+  .floppy-disk .background {
+    width: 280px;
+    height: 280px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+
+  p.gray {
+    font-size: 14px;
+  }
+
+  img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .phone .left,
+  .monitor .left,
+  .monitor .right {
+    width: 45%;
+  }
+}
+
+/* Small screens (Landscape phones, 768px and up) */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
+    grid-template-areas:
+      "learn-more learn-more"
+      "phone phone"
+      "keyboard joystick"
+      "monitor monitor"
+      "twitter floppy"
+      "tablet floppy"
+      "experience experience"
+      "tv tv";
+  }
+
+  .phone,
+  .learn-more,
+  .keyboard,
+  .monitor,
+  .joystick,
+  .tablet,
+  .floppy-disk,
+  .twitter,
+  .experience,
+  .tv {
+    padding: 15px;
+  }
+
+  .phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .phone img {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .floppy-disk .background {
+    width: 250px;
+    height: 250px;
+  }
+
+  .floppy-disk .tag {
+    width: 41%;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  p.gray {
+    font-size: 13px;
+  }
+
+  .monitor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .monitor .left {
+    padding-bottom: 6rem; 
+    order: 1;
+    width: 45%;
+  }
+
+  .monitor .right {
+    order: 2;
+    width: 50%;
+  }
+
+  .monitor img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
+
+  img {
+    max-width: 85%;
+    height: auto;
+  }
+  
+
+  .phone,
+  .learn-more {
+    flex-direction: row;
+    text-align: center;
+  }
+}
+
+/* Extra small screens (Portrait phones, less than 576px) */
+@media (max-width: 576px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(10, auto);
+    grid-template-areas:
+      "phone"
+      "learn-more"
+      "keyboard"
+      "monitor"
+      "joystick"
+      "tablet"
+      "floppy"
+      "twitter"
+      "experience"
+      "tv";
+  }
+
+  .phone,
+  .learn-more,
+  .keyboard,
+  .monitor,
+  .joystick,
+  .tablet,
+  .floppy-disk,
+  .twitter,
+  .experience,
+  .tv {
+    padding: 10px;
+  }
+
+  .floppy-disk .background {
+    width: 220px;
+    height: 220px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 14px;
+  }
+  p.gray {
+    font-size: 12px;
+  }
+
+  img {
+    max-width: 80%;
+    height: auto;
+  }
+
+  .monitor {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .monitor .left {
+    order: 1;
+    width: 45%;
+  }
+
+  .monitor .right {
+    order: 2;
+    width: 50%;
+  }
+
+  .monitor img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .monitor h2,
+  .monitor p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .tablet,
+  .tv {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tablet img,
+  .tv img {
+    margin-top: 15px;
+  }
+}
