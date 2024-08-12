@@ -34,7 +34,6 @@ body {
   grid-template-columns: repeat(4,1fr);
   grid-template-rows: repeat(3, 450px) calc(450px / 2);
   gap: 0px 0px;
-  /* grid-auto-flow: row; */
   grid-template-areas:
     "phone phone learn-more learn-more"
     "keyboard monitor monitor floppy"
@@ -139,9 +138,10 @@ p.gray {
 }
 
 .learn-more .inner {
-  text-align: center;
-  width: 50%;
+    text-align: center;
+    width: 85%;
 }
+
 
 .learn-more h1 {
   font-size: 48px;
