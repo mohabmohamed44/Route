@@ -48,7 +48,7 @@ img {
 .caption-detail,
 .mini-caption-detail {
   text-transform: uppercase;
-  font-family: Montserrat, sans-serif;
+  font-family: var(--second-font);
   font-weight: 700;
   letter-spacing: 2px;
 }
@@ -78,7 +78,7 @@ span.arrow {
 h1,
 h2,
 h3 {
-  font-family: Arvo, sans-serif;
+  font-family: var(--main-font);
   color:var(--grey-degree);
   margin: 15px 0px;
   font-weight: normal;
@@ -89,7 +89,7 @@ h3 {
 }
 
 p.gray {
-  font-family: "Open Sans", sans-serif;
+  font-family: var(--third-font);
   color: var(--color-10);
   font-size: 14px;
   line-height: 25px;
@@ -286,7 +286,7 @@ p.gray {
   color: white;
   font-size: 32px;
   font-weight: bold;
-  font-family: Arvo, sans-serif;
+  font-family: var(--main-font);
   margin-top: 30px;
 }
 
