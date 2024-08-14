@@ -139,7 +139,7 @@ p.gray {
 
 .learn-more .inner {
   text-align: center;
-  width: 69%;
+  width: 65%;
 
 }
 
@@ -197,7 +197,6 @@ p.gray {
 
 
 .monitor img {
-  object-position: right;
   position: absolute;
   width: 40%;
   bottom: 0;
@@ -319,14 +318,16 @@ p.gray {
 
 .floppy-disk .tag {
   background-color: rgba(255, 255, 255, 0.08);
-  width: 30%;
+  width: 41%;
   line-height: 25px;
   border-radius: 15px;
   margin: auto;
 }
 
-.floppy-disk .tag img {
+.floppy-disk .tag i {
   width: 12px;
+  color: var(--color-9);
+  margin-right: 5px;
 }
 
 .floppy-disk button {

@@ -23,13 +23,13 @@
 /* Medium screens (Tablets, 992px and up) */
 @media (max-width: 992px) {
   .container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, auto);
     grid-template-areas:
-      "phone learn-more"
-      "keyboard floppy"
-      "joystick tablet floppy"
-      "twitter experience tv";
+      "phone phone learn-more learn-more"
+      "keyboard monitor monitor floppy"
+      "joystick tablet tablet floppy"
+      "twitter experience tv tv";
   }
 
   .phone,
@@ -75,116 +75,6 @@
     width: 45%;
   }
 }
-
-/* Small screens (Landscape phones, 768px and up) */
-@media (max-width: 768px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, auto);
-    grid-template-areas:
-      "learn-more learn-more"
-      "phone phone"
-      "keyboard joystick"
-      "monitor monitor"
-      "twitter floppy"
-      "tablet floppy"
-      "experience experience"
-      "tv tv";
-  }
-
-  .phone,
-  .learn-more,
-  .keyboard,
-  .monitor,
-  .joystick,
-  .tablet,
-  .floppy-disk,
-  .twitter,
-  .experience,
-  .tv {
-    padding: 15px;
-  }
-
-  .phone {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .phone img {
-    max-width: 60%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .floppy-disk .background {
-    width: 320px;
-    height: 320px;
-  }
-
-  .floppy-disk .tag {
-    width: 41%;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-  h2 {
-    font-size: 22px;
-  }
-  h3 {
-    font-size: 16px;
-  }
-  p.gray {
-    font-size: 13px;
-  }
-
-  .monitor {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .monitor .left {
-    padding-bottom: 70px;
-    order: 1;
-    width: 45%;
-  }
-
-  .monitor .right {
-    order: 2;
-    width: 50%;
-    padding-inline: 10px;
-  }
-  .monitor img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 0;
-  }
-
-  img {
-    max-width: 85%;
-    height: auto;
-  }
-  .tv h3 {
-    color: white;
-    font-size: 20px;
-    max-width: 30%;
-  }
-
-  .experience .heading-3 {
-    font-size: 22px;
-  }
-
-  .phone,
-  .learn-more {
-    flex-direction: row;
-    text-align: center;
-  }
-}
-
 /* Extra small screens (Portrait phones, less than 576px) */
 @media (max-width: 576px) {
   .container {
