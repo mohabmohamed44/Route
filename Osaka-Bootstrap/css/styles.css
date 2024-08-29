@@ -1,0 +1,146 @@
+:root {
+  --main-color: #ff206e;
+}
+
+body {
+  font-family: "Bebas Neue", sans-serif;
+  scroll-padding-top: 50px;
+}
+
+.navbar-nav .nav-link.active
+{
+    color:var(--main-color);
+    position:relative
+
+}
+
+.navbar-nav .nav-link.active::after
+{
+    content:"";
+    position:absolute;
+    width:100%;
+    height: 3px;
+    background-color: #ff206e;
+    bottom:0;
+    left:0;
+}
+
+header.header {
+  background-image: url("../img/bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+header.header div.header-content a {
+  color: var(--main-color);
+}
+
+header.header div.header-content h1 {
+  font-size: 70px;
+}
+
+div.social-icons ul li a div {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* End of header */
+
+/* Start of Portfolio */
+section.portfolio div.portfolio-header h2,
+section.services div.services-header h2,
+section.testimonials div.testimonial-header h2 {
+  position: relative;
+  color: rgba(211, 211, 211, 0.5);
+  font-size: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.portfolio div.portfolio-header h2::after {
+  content: "Portfolio";
+  position: absolute;
+  font-size: 56px;
+  color: black;
+}
+
+section.services div.services-header h2::after {
+  content: "Services";
+  position: absolute;
+  font-size: 56px;
+  color: white;
+}
+
+/* services */
+section.services {
+  background-image: url("../img/dark_dot.jpg");
+  background-repeat: repeat;
+}
+
+section.services div.icon {
+  width: 50px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.services div.service-item i {
+  transition: color 1s;
+}
+
+section.services div.service-item:hover i {
+  color: var(--main-color) !important;
+}
+
+section.services div.service-item h3 {
+  position: relative;
+}
+
+section.services div.service-item h3::after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: var(--main-color);
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 1s;
+}
+
+
+section.services div.service-item:hover h3::after {
+  width: 60px;
+}
+
+
+section.testimonials div.testimonial-header h2::after {
+  content: "Testimonials";
+  position: absolute;
+  font-size: 56px;
+  color: black;
+}
+
+
+.carousel-indicators [data-bs-target] {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-indent: 0;
+}
+
+.carousel-item>img {
+  transform: translateY(50%);
+  width: 100px;
+  border-radius: 50%;
+}
