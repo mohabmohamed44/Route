@@ -435,6 +435,10 @@ header h5 {
     z-index: 1;
 }
 
+#about {
+    overflow: hidden;
+}
+
 #about .first-col figure img {
     position: relative;
     z-index: 2;
