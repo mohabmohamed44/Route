@@ -22,7 +22,12 @@ html {
     scroll-behavior: smooth;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--primary-font);
     font-weight: 800;
 }
@@ -31,6 +36,28 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-nav .nav-item .nav-link {
     position: relative;
     transition: all 0.3s ease;
+}
+
+.main-title-section {
+    color: var(--main-color);
+    font-size: 2.5rem;
+    position: relative;
+    font-weight: 900;
+    width: fit-content;
+    z-index: 1;
+}
+
+.main-title-section::before {
+    content: '';
+    background-image: url(../imgs/dots.png);
+    background-position: center;
+    background-repeat: repeat;
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    bottom: 0rem;
+    top: 60%;
+    z-index: -1;
 }
 
 .navbar-nav .nav-item .nav-link::before {
@@ -384,9 +411,12 @@ header h5 {
 }
 
 @keyframes blink {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0;
     }
@@ -410,6 +440,7 @@ header h5 {
     z-index: 2;
     height: auto;
 }
+
 .main-padding {
     padding-top: var(--main-padding);
     padding-bottom: var(--main-padding);
@@ -457,8 +488,9 @@ header h5 {
     from {
         width: 0;
     }
+
     to {
-        width: 100%; 
+        width: 100%;
     }
 }
 
@@ -520,4 +552,33 @@ header h5 {
 #about .btns .contact:hover {
     background-color: #000;
     color: #fff;
+}
+
+
+
+/* Services */
+
+#services {
+    background-color: var(--secondary-color);
+}
+
+.main-padding {
+    padding-top: var(--main-padding);
+}
+
+#services .icons {
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--main-bg-color);
+    transition: var(--main-transition);
+}
+
+#services p {
+    color: var(--alt-color);
+    word-spacing: 0.125rem;
+}
+
+#services .item:hover .icons {
+    background-color: #000;
+    color: white;
 }
