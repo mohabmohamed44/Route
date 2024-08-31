@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Poppins:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./imgs/favicon.ico" type="image/x-icon" />
+    <title>Daniels</title>
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#navbar-example">
+    <nav
+      id="navbar-smooth"
+      class="navbar navbar-expand-lg py-4 w-100 z-3 fixed-top"
+    >
+      <div class="container">
+        <a class="navbar-brand text-uppercase logo" href="#home">Daniels</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item px-2">
+              <a class="nav-link home active" href="#home">Home</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link about" href="#about">About</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link services" href="#services">Services</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link portfolio" href="#portfolio">Works</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link testimonials" href="#testimonials">Clients</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link team" href="#team">Team</a>
+            </li>
+            <li class="nav-item px-2">
+              <a class="nav-link contact" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <header
+      class="header vh-100 d-flex align-items-center justify-content-center position-relative"
+      id="home"
+    >
+      <div
+        class="main-overlay position-absolute end-0 start-0 top-0 bottom-0 bg-black opacity-50"
+      ></div>
+      <div class="container text-center z-2">
+        <div class="title py-3">
+          <h5 class="text-white mb-4">Hello</h5>
+          <h1 class="text-white mb-4">
+            <span>I Am</span>
+            <span class="typing-effect"></span>
+            <span class="cursor">&nbsp;</span>
+          </h1>
+        </div>
+        <div class="social text-white d-flex justify-content-center gap-3">
+          <a href="#" class="social-icon"
+            ><i class="fa-brands fa-facebook-f"></i
+          ></a>
+          <a href="#" class="social-icon"
+            ><i class="fa-brands fa-twitter"></i
+          ></a>
+          <a href="#" class="social-icon"
+            ><i class="fa-brands fa-behance"></i
+          ></a>
+          <a href="#" class="social-icon"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+          <a href="#" class="social-icon"
+            ><i class="fa-brands fa-youtube"></i
+          ></a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- About Section -->
+      <section id="about" class="about bg-light main-padding">
+        <div class="container">
+          <div class="row gy-5">
+            <div class="col-lg-6 first-col">
+              <figure class="position-relative">
+                <img
+                  src="./imgs/hero.jpg"
+                  alt="Jerry Daniels"
+                  class="w-100 ps-4"
+                />
+              </figure>
+            </div>
+            <div class="col-lg-6">
+              <div class="title mb-4">
+                <h3 class="mb-0">about me.</h3>
+                <span class="lable">UI / UX DESIGNER & WEB DEVELOPER</span>
+              </div>
+              <div class="about-content mb-5">
+                I am <strong>Jerry Daniels</strong> Lorem Ipsum is simply dummy text of the
+                printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever It has survived not only
+                five centuries, but also the leap into electronic but also the
+                leap into electronic typesetting, remaining essentially
+                unchanged. It was popularised in the 1960s with the release of
+                Letraset sheets containing
+              </div>
+              <div class="progress-bars mb-5">
+                <div class="progress mb-4">
+                  <div
+                    class="progress-bar bg-black text-start ps-3 prog-1"
+                    role="progressbar"
+                    aria-valuenow="95"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <h6
+                      class="m-0 text-white d-flex justify-content-between w-100 pe-3"
+                    >
+                      web design <span>95%</span>
+                    </h6>
+                  </div>
+                </div>
+                <div class="progress mb-4">
+                  <div
+                    class="progress-bar bg-black text-start ps-3 prog-2"
+                    role="progressbar"
+                    aria-valuenow="80"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <h6
+                      class="m-0 text-white d-flex justify-content-between w-100 pe-3"
+                    >
+                      branding <span>80%</span>
+                    </h6>
+                  </div>
+                </div>
+                <div class="progress mb-4">
+                  <div
+                    class="progress-bar bg-black text-start ps-3 prog-3"
+                    role="progressbar"
+                    aria-valuenow="90"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  >
+                    <h6
+                      class="m-0 text-white d-flex justify-content-between w-100 pe-3"
+                    >
+                      development <span>90%</span>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+              <div class="btns">
+                <a href="#" class="btn btn-dark me-2 download">Download C.V</a>
+                <a href="#contact" class="btn btn-outline-dark contact"
+                  >contact me</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
