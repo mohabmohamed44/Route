@@ -4,7 +4,9 @@
     --primary-color: #343434;
     --third-color: #999;
     --main-transition: all 0.5s ease;
-    --secondary-color: #f7f7f7;
+    --secondary-color: #5b5b5b;
+    --main-background-color: #f7f7f7;
+    --tertiary-color: #f4f4f4;
     --fifth-color: #869791;
     --fourth-color: #d6d6d6;
     --main-padding: 6.25rem;
@@ -543,7 +545,7 @@ header h5 {
 #about .btns .download {
     background-color: #000;
     color: #fff;
-    transition: all 0.5s ease-in-out ;
+    transition: all 0.5s ease-in-out;
 }
 
 #about .btns .contact {
@@ -567,7 +569,7 @@ header h5 {
 /* Services */
 
 #services {
-    background-color: var(--secondary-color);
+    background-color: var(--main-background-color);
 }
 
 .main-padding {
@@ -677,7 +679,7 @@ header h5 {
 /* Start of Testimonials */
 
 section.testimonials {
-    background-color: var(--secondary-color);
+    background-color: var(--main-background-color);
     min-height: 70vh;
 }
 
@@ -708,4 +710,130 @@ section.testimonials {
 
 .carousel-indicators .active {
     background-color: var(--fifth-color) !important;
+}
+
+/* Team Section */
+section.team {
+    background-color: var(--main-background-color);
+}
+
+.team .card-body {
+    background-color: #5b5b5b;
+    color: white;
+}
+
+.team .card-body h4 {
+    font-weight: 500;
+}
+
+.team .row figure .overlay {
+    transition: var(--main-transition);
+    transform: rotateY(180deg) scale(0.5, 0.5);
+    opacity: 0;
+    inset: 0.3125rem;
+}
+
+.team .row .card-item:hover .overlay {
+    transform: rotateY(0deg) scale(1, 1);
+    opacity: 1;
+}
+
+.team .row figure .overlay span {
+    width: 3.125rem;
+    height: 3.125rem;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    border: 0.0625rem solid #000;
+    transition: var(--main-transition);
+}
+
+.team .row figure .overlay span:hover {
+    background-color: white;
+    color: #000;
+}
+
+.team .row figure img {
+    transition: all 0.7s;
+}
+
+.team .row figure:hover img {
+    transform: scale(1.5);
+}
+
+.team .row .card-text h5 {
+    font-weight: 700;
+}
+
+/* Counter Section */
+.counter .item :not(:last-child) {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.counter .item .title {
+    color: var(--alternate-color);
+    font-weight: 500;
+}
+
+/* Contact section */
+.contact .icon {
+    width: 4.375rem;
+    height: 4.375rem;
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    transition: all 0.4s;
+}
+
+.contact .row>div:hover span {
+    color: #fff;
+    background-color: var(--primary-color);
+}
+
+.contact .icon h6 {
+    color: var(--primary-color);
+}
+
+.contact p {
+    color: var(--alternate-color);
+}
+
+.custom-input {
+    background-color: #f8f8f8;
+    border: 0;
+    border-radius: 5px;
+    padding: 12px 15px;
+}
+
+.custom-input::placeholder {
+    color: #999;
+}
+
+.custom-button {
+    background-color: black;
+    color: white;
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.custom-button:hover {
+    background-color: white;
+    color: #000;
+}
+
+textarea.custom-input {
+    resize: horizontal;
+}
+
+.foot {
+    background-color: var(--primary-color);
+}
+
+.foot p {
+    color:var(--alternate-color);
+    line-height: 1.6;
+    margin-block: 20px;
 }
