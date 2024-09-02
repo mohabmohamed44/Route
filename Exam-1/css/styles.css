@@ -769,6 +769,7 @@ section.team {
 .counter .item :not(:last-child) {
     color: var(--primary-color);
     font-weight: 600;
+    font-family: var(--primary-font);
 }
 
 .counter .item .title {
@@ -833,7 +834,7 @@ textarea.custom-input {
 }
 
 .foot p {
-    color:var(--alternate-color);
+    color: var(--alternate-color);
     line-height: 1.6;
     margin-block: 20px;
 }
