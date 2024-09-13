@@ -17,23 +17,68 @@ This repository is dedicated to showcasing the work and projects completed as pa
     
     ```
 3. **Repo Structure**
+  
   ```
-  Route/
-  ├───Assignment-1
-  │   ├───img
-  │   └─── index.html
-  ├───Assignment-2
-  │   ├───img
-  │   └───index.html
-  ├───Assignment-3
-  │   ├───css
-  │   └───images
-  │       └───Icons
-  ├───Session 2
-  │   └───img
-  │   └─── index.html
-  └───session-3
-      ├───css
-      └───img
-      └─── index.html
+D:.
+├───Assignment-1 [Misr-Travel]
+│   └───img
+├───Assignment-2 [Personal-Data-Form]
+│   └───img
+├───Assignment-3 [Bakery]
+│   ├───css
+│   └───images
+│       └───Icons
+├───Assignment-4 [Fokir]
+│   ├───css
+│   ├───images
+│   │   ├───blog
+│   │   └───portfolio
+│   └───webfonts
+├───Assignment-5 [Mealify]
+│   ├───css
+│   ├───images
+│   │   ├───chefs
+│   │   └───gallery
+│   └───webfonts
+├───Assignment-6 [Grid]
+│   ├───css
+│   ├───img
+│   └───webfonts
+├───Assignment-7 [Devfolio]
+│   ├───css
+│   ├───img
+│   ├───js
+│   └───webfonts
+├───Assignment-8 [Js - Problems]
+├───Assignment-9 [Random Quote Generator]
+│   ├───css
+│   ├───js
+│   └───webfonts
+├───Exam-1
+│   ├───css
+│   ├───imgs
+│   │   └───portfolio
+│   ├───js
+│   └───webfonts
+├───Osaka-Bootstrap
+│   ├───css
+│   ├───img
+│   ├───js
+│   └───webfonts
+├───Session-2
+│   └───img
+├───session-3
+│   ├───css
+│   └───img
+├───Session-4
+│   └───css
+├───Session-5
+│   └───css
+├───Session-6
+│   ├───css
+│   └───gallery
+└───Session-7
+    ├───css
+    └───js
+
   ```
