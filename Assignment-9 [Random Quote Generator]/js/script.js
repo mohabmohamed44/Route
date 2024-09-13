@@ -52,6 +52,10 @@ const qoute = {
             quote: "In the end, we will remember not the words of our enemies, but the silence of our friends",
             author: "Martin Luther King Jr."
         },
+        {
+            quote:"A room without books is like a body without a soul.",
+            author: "Marcus Tullius Cicero"
+        },
     ]
 };
 
