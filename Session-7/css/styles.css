@@ -1,0 +1,20 @@
+body {
+    font-family: "Prompt", sans-serif;
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: none;
+    border-color: darkcyan !important;
+}
+
+.product-form button.add-btn {
+    width: 10rem;
+    background-color: darkcyan;
+    border:none;
+    transition: background-color 1s ease-in-out;
+}
+
+.product-form button.add-btn:hover{
+    background-color: cyan;
+    transition: all 0.5 ease-in-out;
+}
