@@ -1,0 +1,11 @@
+# Ignore RAR files named Assignments-[number].rar
+Assignment-*.rar
+
+# Ignore these files in all subdirectories
+**/Assignment-*.rar
+
+# If you have specific Assignments RAR files you want to track, you can negate the ignore like this:
+# !Assignments-important.rar
+
+# Optionally, if you want to ignore all other RAR files as well:
+*.rar
