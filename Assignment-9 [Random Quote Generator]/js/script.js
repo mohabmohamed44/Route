@@ -58,14 +58,14 @@ const qoute = {
         },
     ]
 };
-
-const btn = document.getElementById('generate-btn');
+// declare variables
 const qouteText = document.getElementById('qoute-text');
 const authorText = document.getElementById('author-text');
 
 let lastIndex = -1;
 
-btn.onclick = function() {
+// function to generate a random quote
+function generateQuote() {
     let randomIndex;
     do {
         randomIndex = Math.floor(Math.random() * qoute.quotes.length);
@@ -76,5 +76,6 @@ btn.onclick = function() {
     qouteText.textContent = randomQuote.quote;
     authorText.textContent = randomQuote.author;
     console.log(randomQuote); // for testing and debugging
-};
+}
+
 
