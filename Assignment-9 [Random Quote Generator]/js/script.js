@@ -77,5 +77,3 @@ function generateQuote() {
     authorText.textContent = randomQuote.author;
     console.log(randomQuote); // for testing and debugging
 }
-
-
