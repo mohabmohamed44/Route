@@ -45,7 +45,8 @@
           id="book-mark-name"
           class="form-control border-0"
           placeholder="BookMark Name"
-          required
+          required is-invalid
+          oninput="validationName()" 
         />
       </div>
       <div
@@ -60,7 +61,8 @@
           id="bookMark-URL"
           placeholder="Website URL"
           class="form-control border-0"
-          required
+          required is-invalid
+          oninput="validationUrl()"
         />
       </div>
       <div class="text-center mt-5">

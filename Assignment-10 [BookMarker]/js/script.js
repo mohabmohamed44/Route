@@ -63,6 +63,35 @@ function deleteItem(indexItem) {
     displayBookMark();
 }
 
+
+function validationName() {
+    let text = bookMarkName.value;
+    let regex = /^[A-Za-z][A-Za-z0-9]{2,}$/;
+    if (regex.test(text)) {
+        bookMarkName.classList.add("is-valid");
+        bookMarkName.classList.remove("is-invalid");
+        return true;
+    } else {
+        bookMarkName.classList.add("is-invalid");
+        bookMarkName.classList.remove("is-valid");
+        return false;
+    }
+}
+
+function validationUrl() {
+    let text = bookMarkUrl.value;
+    let regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    if (regex.test(text)) {
+        bookMarkUrl.classList.add("is-valid");
+        bookMarkUrl.classList.remove("is-invalid");
+        return true;
+    } else {
+        bookMarkUrl.classList.add("is-invalid");
+        bookMarkUrl.classList.remove("is-valid");
+        return false;
+    }
+}
+
 function openPage(index) {
     let url = addMoreInfo[index].url;
     
