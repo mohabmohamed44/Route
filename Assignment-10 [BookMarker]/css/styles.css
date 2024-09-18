@@ -74,10 +74,19 @@ div.book-mark-site-name, label,  input::placeholder{
 }
 
 
-div.book-mark-site-name input:focus{
-    border-color: #FEC260 ;
+div.book-mark-site-name .form-control:focus{
+    border-color: #FEC260 !important;
 }
 
 table,tr, thead, tbody, th, td, tr {
     font-family: var(--alternate-font);
 }
+
+.is-valid {
+    border-color: #16a34a;
+}
+
+.is-invalid {
+    border-color: #dc2626;
+}
+

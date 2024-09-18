@@ -9,3 +9,6 @@ Assignment-*.rar
 
 # Optionally, if you want to ignore all other RAR files as well:
 *.rar
+
+# Ignore index.txt
+index.txt
