@@ -1,5 +1,5 @@
 # Ignore RAR files named Assignments-[number].rar
-Assignment-*.rar
+Exam-1.rar
 
 # Ignore these files in all subdirectories
 **/Assignment-*.rar
