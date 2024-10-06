@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="weather, about, contact, api" />
+    <meta
+      name="description"
+      content="This page is about the weather and how to contact us"
+    />
+    <title>Contact || Weather</title>
+    <!-- Css Files -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg py-4 align-items-center">
+      <div class="container py-3 px-lg-5">
+        <a
+          href=""
+          class="navbar-brand text-white d-flex gap-2 align-items-center"
+        >
+          <img src="./img/logo.png" alt="logo" />
+          <span class="d-inline-flex flex-column">
+            <h2 class="fs-6 fw-bold mb-1">Weather</h2>
+            <p class="fw-lighter opacity-75 mb-0">tagline goes here</p>
+          </span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end mt-lg-0"
+          id="navbarNavAltMarkup"
+        >
+          <div class="navbar-nav gap-lg-2 mt-5 mt-lg-0">
+            <a
+              class="nav-link text-white rounded-5 px-4 py-4 py-lg-2 d-flex align-items-center justify-content-center fw-medium"
+              aria-current="page"
+              href="index.html"
+              >Home</a
+            >
+            <a
+              class="nav-link text-white rounded-5 px-4 py-4 py-lg-2 d-flex align-items-center justify-content-center fw-medium"
+              href="#"
+              >News</a
+            >
+            <a
+              class="nav-link text-white rounded-5 px-4 py-4 py-lg-2 d-flex align-items-center justify-content-center fw-medium"
+              href="#"
+              >Live cameras</a
+            >
+            <a
+              class="nav-link text-white rounded-5 px-4 py-4 py-lg-2 d-flex align-items-center justify-content-center fw-medium"
+              href="#"
+              >Photos</a
+            >
+            <a
+              class="nav-link text-white rounded-5 px-4 py-4 py-lg-2 d-flex align-items-center justify-content-center fw-medium active"
+              href="contact.html"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- header -->
+    <section class="form">
+      <div class="container text-white pt-5">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="contact-info">
+              <!-- Placeholder for map -->
+              <div class="map">
+                <div class="map" data-latitude="-6.897789" data-longitude="107.621735"></div>
+              </div>
+              <h5 class="mb-3">Company Name INC.</h5>
+              
+              <p class="mb-2">
+                <i class="fa-solid fa-location-dot"></i>
+                2803 Avenue Street, Los Angeles
+              </p>
+              <p class="mb-2">
+                <i class="fa-solid fa-phone"></i>
+                Phone: +1 800 314 235
+              </p>
+              <p class="mb-0">
+                <i class="fa-solid fa-envelope"></i>
+                Email: contact@companyname.com
+              </p>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <h1 class="mb-4">Contact Us</h1>
+            <p class="mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
+              consectetur inventore ducimus, facilis, numquam id soluta omnis
+              eius recusandae nesciunt vero repellat harum cum. Nisi facilis
+              odit hic, ipsum sed!
+            </p>
+            <form>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Your name..."
+                  />
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email Address..."
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Company name..."
+                  />
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Website..."
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  placeholder="Message..."
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary px-4 mb-3 float-end rounded-5 fs-5">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- start of footer -->
+    <footer class="footer container-fluid py-5">
+      <div class="container">
+        <div class="row">
+          <div class="search col-12 col-lg-8">
+            <div
+              class="inner position relative d-flex align-items-center justify-content-end mb-4"
+            >
+              <input
+                type="text"
+                class="form-control form-control-lg rounded-5"
+                placeholder="Enter a valid Email to subscribe..."
+              />
+              <button
+                type="button"
+                class="_btn btn btn-primary position-absolute rounded-5 px-4 me-2 py-2"
+                id="search-btn"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+          <div
+            class="icons d-flex gap-2 justify-content-start justify-content-lg-start"
+          >
+            <a
+              href="www.facebook.com"
+              class="rounded-circle d-inline-flex align-items-center justify-content-center text-decoration-none"
+              target="_blank"
+            >
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a
+              href="www.twitter.com"
+              class="rounded-circle d-inline-flex align-items-center justify-content-center text-decoration-none"
+              target="_blank"
+            >
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a
+              href="www.google.com"
+              class="rounded-circle d-inline-flex align-items-center justify-content-center text-decoration-none"
+              target="_blank"
+            >
+              <i class="fa-brands fa-google-plus-g"></i>
+            </a>
+            <a
+              href="www.pinterest.com"
+              class="rounded-circle d-inline-flex align-items-center justify-content-center text-decoration-none"
+              target="_blank"
+            >
+              <i class="fa-brands fa-pinterest-p"></i>
+            </a>
+          </div>
+
+          <!-- footer Copyrights -->
+          <div class="search col-12 col-lg-8">
+            <p class="text-white opacity-75 pt-2">
+              Copyright 2014 Company name. Designed by Themezy. All rights
+              reserved
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/script.js"></script>
+</html>
