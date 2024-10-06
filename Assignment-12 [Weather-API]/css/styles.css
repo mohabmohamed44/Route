@@ -19,6 +19,7 @@
  
 body {
   font-family: var(--secondary-font);
+  scroll-behavior: smooth;
 }
 
 .navbar {
