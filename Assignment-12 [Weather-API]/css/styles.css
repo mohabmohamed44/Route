@@ -19,6 +19,7 @@
  
 body {
   font-family: var(--secondary-font);
+  scroll-behavior: smooth;
 }
 
 .navbar {
@@ -215,11 +216,12 @@ i {
   background-color: var(--first-color);
   border: 3px solid var(--border-color);
   outline: var(--fifth-color);
-  border-radius:10px;
+  border-radius:25px;
   padding: 15px;
-
 }
-
+textarea {
+  resize: both;
+}
 .form-control::placeholder {
   color: var(--light-color);
 }
