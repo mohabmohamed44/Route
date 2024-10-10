@@ -63,6 +63,11 @@ button.navbar-toggler:hover,
   color: var(--fifth-color) !important;
 }
 
+p.temp {
+  font-size: 3rem;
+}
+
+
 /* header */
 
 header {
