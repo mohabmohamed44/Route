@@ -1,14 +1,16 @@
+// strict mode
+'use strict';
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("search-btn");
 
 let myApiKey = `c5b945f631c44025b65132711241010`;
 let myUrl = `http://api.weatherapi.com/v1/forecast.json?key=${myApiKey}&days=3`;
 
-searchBtn.addEventListener("click", () => {
+searchBtn.addEventListener("click", function() {
     DisplayWeatherData();
 });
 
-searchInput.addEventListener("keypress", (e) => {
+searchInput.addEventListener("keypress", function(e)  {
     if (e.key === "Enter") {
         DisplayWeatherData();
     }
@@ -25,13 +27,14 @@ async function DisplayWeatherData() {
 }
 
 function updateDataOnScreen(data) {
+    // Check if data is null
     if (!data) return;
 
     // Get all cards
     const cards = document.querySelectorAll('.card');
     
     // Update all three days
-    data.forecast.forecastday.forEach((forecast, index) => {
+    data.forecast.forecastday.forEach(function (forecast, index)  {
         const card = cards[index];
         const date = new Date(forecast.date);
         
