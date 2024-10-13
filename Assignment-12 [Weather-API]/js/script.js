@@ -4,7 +4,7 @@ const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("search-btn");
 
 let myApiKey = `c5b945f631c44025b65132711241010`;
-let myUrl = `http://api.weatherapi.com/v1/forecast.json?key=${myApiKey}&days=3`;
+let myUrl = `https://api.weatherapi.com/v1/forecast.json?key=${myApiKey}&days=3`;
 
 searchBtn.addEventListener("click", function() {
     DisplayWeatherData();
