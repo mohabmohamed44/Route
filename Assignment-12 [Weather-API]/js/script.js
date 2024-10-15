@@ -79,6 +79,7 @@ window.addEventListener('load', () => {
 
 
 // get Current Location (Higher Order Function)
+// Retrieves the user's current  geo location for displaying weather data or defaults to Cairo 
 function getCurrentLocation() {
     navigator.geolocation.getCurrentPosition(function(position) {
         const city = `${position.coords.latitude},${position.coords.longitude}`;
