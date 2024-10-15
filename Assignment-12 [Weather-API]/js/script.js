@@ -76,3 +76,21 @@ window.addEventListener('load', () => {
     searchInput.value = "Cairo";
     DisplayWeatherData();
 });
+
+
+// get Current Location (Higher Order Function)
+function getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        const city = `${position.coords.latitude},${position.coords.longitude}`;
+        searchInput.value = city;
+        DisplayWeatherData();
+    },
+    function() {
+        console.log("Unable to retrieve your location, Defaulting to Cairo");
+        searchInput.value = "Cairo";
+        DisplayWeatherData();
+    
+    });
+}
+
+getCurrentLocation();
