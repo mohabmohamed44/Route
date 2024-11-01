@@ -1,0 +1,382 @@
+html {
+  scroll-padding-top: 50px;
+}
+
+:root {
+  --main-color: #e65f78;
+}
+
+.loading {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #001524;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999999;
+}
+
+.nav-fixed {
+  position: fixed !important;
+  z-index: 999999;
+  background-color: white; /* your variable color */
+  transition: background-color 0.3s ease; /* smooth transition */
+}
+
+
+.settings {
+  width: 50px;
+  height: 50px;
+  background-color: rgb(23, 3, 3);
+  top: 200px;
+  z-index: 9999;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: translateX(-100%);
+  position: fixed;
+}
+
+.gear-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: -50px;  /* Width of the gear icon */
+  width: 50px;
+  height: 50px;
+  color: white;
+  background-color: rgb(23, 3, 3);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+}
+
+/* Additional CSS for color switcher functionality */
+.settings.open {
+  transform: translateX(0);
+  width: 200px;
+  height: auto;
+  background-color: #fff;
+  padding: 15px;
+}
+
+.settings h2 {
+  display: none;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.settings.open h2 {
+  display: block;
+}
+
+.colors {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.settings.open .colors {
+  display: grid;
+}
+
+.colors li {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.colors li:hover {
+  transform: scale(1.1);
+}
+
+/* Color options */
+.colors li:nth-child(1) { background-color: rgb(43, 42, 76);}
+.colors li:nth-child(2) { background-color: rgb(252,103,54);}
+.colors li:nth-child(3) { background-color: rgb(87,85,254);}
+.colors li:nth-child(4) { background-color: rgb(101, 183, 65);}
+.colors li:nth-child(5) { background-color: rgb(252, 103, 54);}
+
+/* Theme color applications */
+.theme-text {
+  transition: color 0.3s ease;
+}
+
+.theme-link {
+  transition: color 0.3s ease;
+}
+
+/* Added for smooth transitions */
+span, .nav-link {
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color: #ccc #0000;
+  animation: l16 1s infinite linear;
+}
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+.loader::before {
+  border-color: #f03355 #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+.loader::after {
+  margin: 8px;
+}
+@keyframes l16 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+/* gear icon */
+
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+.max-width-500 {
+  max-width: 500px;
+}
+
+.text-main {
+  color: var(--main-color) !important;
+}
+
+.bg-main {
+  background-color: var(--main-color) !important;
+}
+
+.scroll-to-top {
+  border-radius: 50% !important;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-nav .nav-link.active,
+.nav-link:hover {
+  color: var(--main-color);
+}
+
+/* home section  */
+.home {
+  background-image: url("../images/header-bg.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+
+.home .home_layer button:hover {
+  background-color: white !important;
+  color: black !important;
+}
+
+.setting_icon {
+  top: 30%;
+  background-color: #2b2424;
+}
+
+.home_layer h1::after {
+  content: " |";
+  animation: typing 3s linear 1s infinite alternate;
+}
+
+@keyframes typing {
+  0% {
+    content: " G|";
+  }
+
+  6% {
+    content: " Gr|";
+  }
+
+  12% {
+    content: " Gra|";
+  }
+
+  18% {
+    content: " Grap|";
+  }
+
+  24% {
+    content: " Graph|";
+  }
+
+  30% {
+    content: " Graphi|";
+  }
+
+  36% {
+    content: " Graphic|";
+  }
+
+  42% {
+    content: " Graphic |";
+  }
+
+  48% {
+    content: " Graphic De|";
+  }
+
+  56% {
+    content: " Graphic Des|";
+  }
+
+  72% {
+    content: " Graphic Desi|";
+  }
+
+  78% {
+    content: " Graphic Desig|";
+  }
+
+  84% {
+    content: " Graphic Design|";
+  }
+
+  90% {
+    content: " Graphic Designe|";
+  }
+
+  100% {
+    content: " Graphic Designer|";
+  }
+}
+
+/*  end home section  */
+/* start section about */
+.icons i {
+  margin: 0 10px;
+  font-size: 23px;
+  border-radius: 50%;
+  border: 2px solid black;
+  padding: 10px;
+  transition: all 0.4s;
+}
+
+.icons i:hover {
+  border: 2px solid var(--main-color);
+  scale: 1.2;
+  rotate: 360deg;
+  color: var(--main-color);
+}
+
+/* start section about */
+
+/* ----------------Services Section------------ */
+.service_item h5 {
+  position: relative;
+}
+
+.service_item h5::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 3px;
+  background-color: var(--main-color);
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.5s;
+}
+
+.service_item:hover h5::after {
+  width: 70px;
+}
+
+/* ---------------- end Services Section ------------ */
+
+/* client section */
+.carousel-indicators [data-bs-target] {
+  background-color: var(--main-color);
+  width: 12px;
+  height: 4px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+
+.carousel-indicators .active {
+  width: 20px;
+}
+
+/* end client section */
+
+/* start Portfolio section */
+
+.nav-pills .nav-link {
+  color: black;
+  border-radius: 100px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .nav-link:hover {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.work_item .work_item_layer {
+  background-color: rgba(0, 0, 0, 0, 0);
+  transition: all 0.5s;
+}
+
+.work_item:hover .work_item_layer {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.work_item img {
+  transition: transform 0.3s;
+}
+
+.work_item:hover img {
+  transform: scale(1.2);
+}
+
+.work_item:hover .work_item_content {
+  top: 0 !important;
+  bottom: 0;
+}
+
+.work_item .work_item_content {
+  transition: all 0.3s;
+}
+
+/* end Portfolio section */
