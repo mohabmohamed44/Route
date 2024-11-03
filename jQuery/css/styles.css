@@ -191,7 +191,19 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  caret-shape: bar;
 }
+
+._btn {
+  transition: all 0.5s ease;
+}
+
+._btn:hover {
+  transition: all 0.5s ease;
+}
+
+
 
 .navbar-nav .nav-link.active,
 .nav-link:hover {
@@ -215,72 +227,7 @@ h6 {
   background-color: #2b2424;
 }
 
-.home_layer h1::after {
-  content: " |";
-  animation: typing 3s linear 1s infinite alternate;
-}
 
-@keyframes typing {
-  0% {
-    content: " G|";
-  }
-
-  6% {
-    content: " Gr|";
-  }
-
-  12% {
-    content: " Gra|";
-  }
-
-  18% {
-    content: " Grap|";
-  }
-
-  24% {
-    content: " Graph|";
-  }
-
-  30% {
-    content: " Graphi|";
-  }
-
-  36% {
-    content: " Graphic|";
-  }
-
-  42% {
-    content: " Graphic |";
-  }
-
-  48% {
-    content: " Graphic De|";
-  }
-
-  56% {
-    content: " Graphic Des|";
-  }
-
-  72% {
-    content: " Graphic Desi|";
-  }
-
-  78% {
-    content: " Graphic Desig|";
-  }
-
-  84% {
-    content: " Graphic Design|";
-  }
-
-  90% {
-    content: " Graphic Designe|";
-  }
-
-  100% {
-    content: " Graphic Designer|";
-  }
-}
 
 /*  end home section  */
 /* start section about */
