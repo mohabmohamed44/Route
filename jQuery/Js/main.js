@@ -18,6 +18,21 @@ $(".scroll-to-top").on("click", function () {
     }, 800);
 });
 
+//dark button
+document.querySelector(".dark-mode").addEventListener("click", function () {
+    if(document.documentElement.getAttribute("data-bs-theme") == 'light') {
+        document.documentElement.setAttribute("data-bs-theme", "dark");
+        document.querySelector(".navbar-brand").classList.replace("text-black","text-light");
+        document.querySelector("#navbar-example").classList.add("bg-dark");
+        document.querySelector("#navbar-example").classList.add("text-light");
+    } else {
+        document.documentElement.setAttribute("data-bs-theme", "light");
+        document.querySelector(".navbar-brand").classList.remove("text-light");
+        document.querySelector("#navbar-example").classList.remove("bg-dark");
+        document.querySelector("#navbar-example").classList.remove("text-light");
+    }
+})
+
 // smooth scroll
 $(".nav-link").on("click", function (event) {
     if (this.hash !== "") {
