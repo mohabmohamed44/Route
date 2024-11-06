@@ -19,17 +19,21 @@ $(".scroll-to-top").on("click", function () {
 });
 
 //dark button
-document.querySelector(".dark-mode").addEventListener("click", function () {
+const dark_mode_btn = document.querySelector(".dark-mode");
+const icon = dark_mode_btn.querySelector("i");
+dark_mode_btn.addEventListener("click", function () {
     if(document.documentElement.getAttribute("data-bs-theme") == 'light') {
         document.documentElement.setAttribute("data-bs-theme", "dark");
         document.querySelector(".navbar-brand").classList.replace("text-black","text-light");
         document.querySelector("#navbar-example").classList.add("bg-dark");
         document.querySelector("#navbar-example").classList.add("text-light");
+        icon.classList.replace("fa-moon", "fa-sun"); // replace icon to sun in light-mode 
     } else {
         document.documentElement.setAttribute("data-bs-theme", "light");
         document.querySelector(".navbar-brand").classList.remove("text-light");
         document.querySelector("#navbar-example").classList.remove("bg-dark");
         document.querySelector("#navbar-example").classList.remove("text-light");
+        icon.classList.replace("fa-sun", "fa-moon"); // replace icon to moon in the dark-mode
     }
 })
 

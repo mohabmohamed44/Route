@@ -363,3 +363,23 @@ h6 {
   justify-content: center;
   flex-direction: column;
 }
+
+.contact-right .details {
+  display:flex;
+  flex-direction: column;
+  gap:15px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+}
