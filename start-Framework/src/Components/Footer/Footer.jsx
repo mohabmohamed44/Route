@@ -24,17 +24,17 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="border border-white rounded-full flex items-center hover:bg-teal-500 duration-300 cursor-pointer">
-                  <a href="/" target="_blank">
+                  <a href="https://www.linkedin.com/in/mohab-mahmoud-402060224/" target="_blank">
                     <i className="fa-brands fa-linkedin-in m-3" />
                   </a>
                 </li>
                 <li className="border border-white rounded-full flex items-center hover:bg-teal-500 duration-300 cursor-pointer">
-                  <a href="" target="_blank">
+                  <a href="https://www.facebook.com" target="_blank">
                     <i className="fab fa-facebook m-3"></i>
                   </a>
                 </li>
                 <li className="border border-white rounded-full flex items-center hover:bg-teal-500 duration-300 cursor-pointer">
-                  <a href="" target="_blank">
+                  <a href="https://www.twitter.com" target="_blank">
                     <i className="fab fa-twitter m-3" />
                   </a>
                 </li>
