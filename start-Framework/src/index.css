@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+  @apply rounded-lg bg-mainColor duration-300 transition-all;
+}
+
+html {
+  scroll-behavior: smooth;
+}
