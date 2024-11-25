@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [hoveredProduct, setHoveredProduct] = useState(null);
 
   function getProducts() {
     axios
@@ -22,19 +23,19 @@ export default function Products() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
-        Our Products
-      </h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">Our Products</h1>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6">
         {products.map((product) => (
-          <div
-            key={product._id}
-            className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
+          <div 
+            key={product._id} 
+            className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group relative"
+            onMouseEnter={() => setHoveredProduct(product._id)}
+            onMouseLeave={() => setHoveredProduct(null)}
           >
             <div className="relative overflow-hidden">
-              <img
-                src={product.imageCover}
-                alt={product.title}
+              <img 
+                src={product.imageCover} 
+                alt={product.title} 
                 className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
               />
               {product.priceAfterDiscount ? (
@@ -43,16 +44,16 @@ export default function Products() {
                 </span>
               ) : null}
             </div>
-
+            
             <div className="p-4">
               <h2 className="font-bold text-lg text-gray-800 mb-2 truncate">
                 {product.title.split(" ", 2).join(" ")}
               </h2>
-
+              
               <h3 className="text-sm text-emerald-500 mb-2">
                 {product.category.name}
               </h3>
-
+              
               <div className="flex justify-between items-center">
                 <div>
                   {product.priceAfterDiscount ? (
@@ -70,14 +71,32 @@ export default function Products() {
                     </span>
                   )}
                 </div>
-
+                
                 <div className="flex items-center text-yellow-500">
                   <i className="fas fa-star mr-1"></i>
-                  <span className="text-gray-700">
-                    {product.ratingsAverage}
-                  </span>
+                  <span className="text-gray-700">{product.ratingsAverage}</span>
                 </div>
               </div>
+            </div>
+
+            {/* Add to Cart Button */}
+            <div 
+              className={`absolute inset-x-0 bottom-0 transition-all duration-300 ${
+                hoveredProduct === product._id 
+                  ? 'translate-y-0 opacity-100' 
+                  : 'translate-y-full opacity-0'
+              }`}
+            >
+              <button 
+                className="w-full bg-green-600 text-white py-3 hover:bg-green-700 transition-colors duration-300 flex items-center justify-center space-x-2"
+                onClick={() => {
+                  // Add to cart logic here
+                  console.log(`Added ${product.title} to cart`);
+                }}
+              >
+                <i className="fas fa-shopping-cart mr-2"></i>
+                Add to Cart
+              </button>
             </div>
           </div>
         ))}
