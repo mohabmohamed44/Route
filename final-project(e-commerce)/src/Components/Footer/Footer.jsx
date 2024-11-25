@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import googlePlay from "../../assets/google-play.svg.png";
 import amazonPay from "../../assets/amazon-pay.png";
 import AmericanExpress from "../../assets/american-express.png";
@@ -7,8 +7,35 @@ import masterCard from "../../assets/card.png";
 import appStore from "../../assets/app-store.png";
 
 export default function Footer() {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        setIsVisible(false); // Hide the footer when scrolling down
+      } else {
+        setIsVisible(true); // Show the footer when scrolling up
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
-    <footer className="bg-gray-300 py-6 px-4 w-full fixed bottom-0 end-0 start-0">
+    <footer
+      className={`bg-gray-300 py-6 px-4 w-full fixed bottom-0 end-0 start-0 transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="space-y-3 text-start">
           <h2 className="text-2xl font-semibold text-gray-800">
