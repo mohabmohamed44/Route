@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [padding, setPadding] = useState("py-4");
+  const [isOpen, setIsOpen] = useState(false); // State to track menu visibility
 
   const handleScroll = () => {
     if (window.scrollY > 50) {
@@ -17,22 +18,25 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [window.scrollY]);
+  }, []);
 
   return (
     <nav
       className={`bg-secColor fixed right-0 left-0 top-0 px-4 ${padding} duration-300 z-10`}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto gap-1">
+        {/* Logo */}
         <Link to="/" className="text-white text-3xl font-bold uppercase py-5">
           Start Framework
         </Link>
+
+        {/* Hamburger Button */}
         <button
-          data-collapse-toggle="navbar-default"
+          onClick={() => setIsOpen(!isOpen)} // Toggle menu visibility
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none  duration-300 a"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none duration-300"
           aria-controls="navbar-default"
-          aria-expanded="false"
+          aria-expanded={isOpen}
         >
           <span className="sr-only">Open main menu</span>
           <svg
@@ -51,12 +55,19 @@ export default function Navbar() {
             />
           </svg>
         </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+
+        {/* Navigation Menu */}
+        <div
+          className={`${
+            isOpen ? "block" : "hidden"
+          } w-full md:block md:w-auto`} // Toggle visibility with isOpen
+          id="navbar-default"
+        >
           <ul className="font-bold flex flex-col p-4 gap-6 md:gap-0 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
             <li>
               <NavLink
                 to="/About"
-                className="p-3 rounded dark:text-white uppercase"
+                className="p-3 rounded dark:text-white uppercase hover:text-gray-300"
               >
                 About
               </NavLink>
@@ -64,7 +75,7 @@ export default function Navbar() {
             <li>
               <NavLink
                 to="/Portfolio"
-                className="p-3 rounded dark:text-white uppercase"
+                className="p-3 rounded dark:text-white uppercase hover:text-gray-300"
               >
                 Portfolio
               </NavLink>
@@ -72,7 +83,7 @@ export default function Navbar() {
             <li>
               <NavLink
                 to="/Contact"
-                className="p-3 rounded dark:text-white uppercase"
+                className="p-3 rounded dark:text-white uppercase hover:text-gray-300"
               >
                 Contact
               </NavLink>
