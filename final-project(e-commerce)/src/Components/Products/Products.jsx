@@ -76,7 +76,7 @@ export default function Products() {
             onMouseEnter={() => setHoveredProduct(product._id)}
             onMouseLeave={() => setHoveredProduct(null)}
           >
-            <Link to={`/productDetails/${product._id}`} className="block">
+            <Link to={`/productDetails/${product._id}/${product.category.name}`} className="block">
               <div className="relative overflow-hidden">
                 <img
                   src={product.imageCover}
