@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import * as Yup from "yup";
 import { UserContext } from "../../Context/UserContext"; // Use UserContext, not UserContextProvider
 
@@ -216,6 +216,7 @@ export default function Register() {
           </button>
         </form>
       </div>
+      <Link to="/login" className="text-green-600 hover:text-green-800">Already have an account?</Link>
     </div>
   );
 }
