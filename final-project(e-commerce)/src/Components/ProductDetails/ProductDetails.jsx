@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Style from "./ProductDetails.module.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -8,7 +7,6 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fix 1: Call useParams() correctly
   const { id } = useParams();
 
   function getSpecificProduct(productId) {
@@ -28,13 +26,11 @@ export default function ProductDetails() {
   }
 
   useEffect(() => {
-    // Fix 2: Pass id to the function
     if (id) {
       getSpecificProduct(id);
     }
   }, [id]);
 
-  // Add loading and error states
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -57,7 +53,7 @@ export default function ProductDetails() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-[1fr_2fr] gap-8">
         <div className="flex justify-center items-center">
           <img
             src={productDetails.imageCover}
@@ -105,7 +101,6 @@ export default function ProductDetails() {
           <button
             className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors duration-300 mt-6"
             onClick={() => {
-              // Add to cart logic
               console.log(`Added ${productDetails.title} to cart`);
             }}
           >

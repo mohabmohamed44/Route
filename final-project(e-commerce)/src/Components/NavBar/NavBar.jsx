@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/freshcart-logo.svg";
 import { UserContext } from "../../Context/UserContext";
@@ -6,9 +6,7 @@ import { UserContext } from "../../Context/UserContext";
 export default function NavBar() {
   const { setToken, token } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const redirect = useNavigate();
+  let redirect = useNavigate();
 
   function logout() {
     localStorage.removeItem("token");
@@ -20,30 +18,8 @@ export default function NavBar() {
     setIsMenuOpen((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setIsVisible(false); // Hide the navbar when scrolling down
-      } else {
-        setIsVisible(true); // Show the navbar when scrolling up
-      }
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [lastScrollY]);
-
   return (
-    <nav
-      className={`bg-gray-200 fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      }`}
-    >
+    <nav className="bg-gray-200 fixed top-0 end-0 start-0 border-gray-200 z-50">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         {/* Logo */}
         <div className="flex items-center gap-5">
@@ -103,7 +79,7 @@ export default function NavBar() {
           </ul>
           {token ? (
             <button
-              onClick={logout}
+              onClick={logout} // Added logout handler
               className="text-sm text-gray-600 hover:text-gray-900 hover:underline"
             >
               Logout
@@ -199,6 +175,22 @@ export default function NavBar() {
               </li>
             </>
           )}
+          <li className="py-2">
+            <ul className="flex gap-5 justify-center">
+              <li>
+                <i className="fab fa-facebook-f cursor-pointer hover:text-gray-900 transition-colors"></i>
+              </li>
+              <li>
+                <i className="fab fa-twitter cursor-pointer hover:text-gray-900 transition-colors"></i>
+              </li>
+              <li>
+                <i className="fab fa-linkedin cursor-pointer hover:text-gray-900 transition-colors"></i>
+              </li>
+              <li>
+                <i className="fab fa-tiktok cursor-pointer hover:text-gray-900 transition-colors"></i>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </nav>

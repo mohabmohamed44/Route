@@ -5,9 +5,11 @@ import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
-    <div className="container mx-auto">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <Outlet />
+      <main className="flex-grow container mx-auto px-4 py-6 mt-16">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
