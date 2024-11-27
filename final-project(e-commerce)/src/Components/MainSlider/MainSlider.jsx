@@ -48,7 +48,7 @@ export default function MainSlider() {
         </div>
 
         {/* Grocery Banners Section */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col">
           <img
             src={grocery1}
             alt="Grocery Banner 1"

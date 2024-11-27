@@ -150,7 +150,7 @@ export default function ProductDetails() {
                     <img
                       src={product.imageCover}
                       alt={product.title || "Product Image"}
-                      className="w-full h-40 object-cover rounded"
+                      className="w-full object-cover h-full rounded"
                     />
                   ) : (
                     <div className="w-full h-40 bg-gray-200 flex items-center justify-center">
