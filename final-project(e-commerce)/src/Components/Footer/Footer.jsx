@@ -34,10 +34,14 @@ export default function Footer() {
         {/* Payment Partners Section */}
         <div className="flex items-center gap-3 flex-wrap">
           <span className="text-md text-gray-600 mr-2">Payment Partners</span>
-          <img src={amazonPay} alt="Amazon Pay" className="h-16 w-16" />
-          <img src={AmericanExpress} alt="American Express" className="h-16 w-16" />
-          <img src={masterCard} alt="Mastercard" className="h-16 w-16" />
-          <img src={payPal} alt="PayPal" className="h-16 w-16" />
+          <img src={amazonPay} alt="Amazon Pay" className="h-16 w-16 cursor-pointer" />
+          <img
+            src={AmericanExpress}
+            alt="American Express"
+            className="h-16 w-16 cursor-pointer"
+          />
+          <img src={masterCard} alt="Mastercard" className="h-16 w-16 cursor-pointer" />
+          <img src={payPal} alt="PayPal" className="h-16 w-16 cursor-pointer" />
         </div>
 
         {/* App Links Section */}
@@ -46,11 +50,7 @@ export default function Footer() {
             Get deliveries with FreshCart
           </span>
           <a href="#" className="inline-block">
-            <img
-              src={appStore}
-              alt="Download on App Store"
-              className="h-14"
-            />
+            <img src={appStore} alt="Download on App Store" className="h-14" />
           </a>
           <a href="#" className="inline-block">
             <img
