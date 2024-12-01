@@ -87,7 +87,7 @@ export default function ProductDetails() {
             className="max-w-full h-auto object-cover rounded-lg shadow-lg"
           />
         </div>
-        <div className="space-y-4 flex flex-col text-start w-full">
+        <div className="space-y-4 flex flex-col text-start w-full items-center justify-center">
           <h1 className="text-3xl font-bold text-gray-800">
             {productDetails.title}
           </h1>
@@ -116,8 +116,10 @@ export default function ProductDetails() {
               </span>
             </div>
           </div>
-          <h2 className="text-xl font-semibold">Category</h2>
-          <p className="text-emerald-500">{productDetails.category.name}</p>
+          <div className="flex items-center justify-between w-full">
+            <h2 className="text-xl font-semibold">Category</h2>
+            <p className="text-emerald-500">{productDetails.category.name}</p>
+          </div>
           <button
             className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors duration-300"
             onClick={() => {
@@ -132,7 +134,9 @@ export default function ProductDetails() {
 
       {/* Related Products Section */}
       <div className="mt-20">
-        <h2 className="text-2xl font-bold mb-6 text-center">Related Products</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Related Products
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {relatedProducts.map((product) => (
             <div
