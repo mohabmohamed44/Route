@@ -1,16 +1,16 @@
 import React from "react";
-import Footer from "../Footer/Footer";
-import Navbar from "../NavBar/NavBar";
+import Navbar from "../Navbar/Navbar";
 import { Outlet } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 export default function Layout() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <>
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-6 mt-16">
+      <div className="container py-10 px-3 md:px-2 mx-auto max-w-screen-xl">
         <Outlet />
-      </main>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }

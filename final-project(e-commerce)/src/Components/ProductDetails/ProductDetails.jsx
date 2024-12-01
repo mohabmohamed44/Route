@@ -79,7 +79,7 @@ export default function ProductDetails() {
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Product Details Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-8 mt-8">
         <div className="flex justify-center items-center">
           <img
             src={productDetails.imageCover || "/default-placeholder.jpg"}

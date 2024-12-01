@@ -8,8 +8,9 @@ import appStore from "../../assets/app-store.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-200 py-6 px-4 w-full relative bottom-0 z-50">
-      <div className="space-y-3 text-start sticky">
+    <footer className="bg-gray-200 py-6 px-4 w-full flex flex-col bottom-0 start-0 end-0">
+      {/*  First Part */}
+      <div className="flex flex-col space-y-3 container text-start mx-auto">
         <h2 className="text-2xl font-semibold text-gray-800">
           Get the FreshCart app
         </h2>
@@ -26,35 +27,38 @@ export default function Footer() {
             Share App Link
           </button>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between items-center pt-3 border-t border-gray-400">
-          <div className="flex items-center gap-3 mb-2 sm:mb-0">
-            <span className="text-md text-gray-600 mr-2">
-              Payment Partners
-            </span>
-            <img src={amazonPay} alt="Amazon Pay" className="h-12" />
-            <img src={AmericanExpress} alt="American Express" className="h-12" />
-            <img src={masterCard} alt="Mastercard" className="h-12" />
-            <img src={payPal} alt="PayPal" className="h-12" />
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="text-md text-gray-600">
-              Get deliveries with FreshCart
-            </span>
-            <a href="#" className="inline-block">
-              <img
-                src={appStore}
-                alt="Download on App Store"
-                className="h-14"
-              />
-            </a>
-            <a href="#" className="inline-block">
-              <img
-                src={googlePlay}
-                alt="Get it on Google Play"
-                className="h-12"
-              />
-            </a>
-          </div>
+      </div>
+
+      {/* second Part */}
+      <div className="flex flex-col sm:flex-row justify-between items-center pt-6 border-t border-gray-400 mt-6 container mx-auto">
+        {/* Payment Partners Section */}
+        <div className="flex items-center gap-3 flex-wrap">
+          <span className="text-md text-gray-600 mr-2">Payment Partners</span>
+          <img src={amazonPay} alt="Amazon Pay" className="h-12" />
+          <img src={AmericanExpress} alt="American Express" className="h-12" />
+          <img src={masterCard} alt="Mastercard" className="h-12" />
+          <img src={payPal} alt="PayPal" className="h-12" />
+        </div>
+
+        {/* App Links Section */}
+        <div className="flex items-center gap-3 mt-4 sm:mt-0">
+          <span className="text-md text-gray-600">
+            Get deliveries with FreshCart
+          </span>
+          <a href="#" className="inline-block">
+            <img
+              src={appStore}
+              alt="Download on App Store"
+              className="h-14 w-24"
+            />
+          </a>
+          <a href="#" className="inline-block">
+            <img
+              src={googlePlay}
+              alt="Get it on Google Play"
+              className="h-12"
+            />
+          </a>
         </div>
       </div>
     </footer>
