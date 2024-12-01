@@ -19,7 +19,7 @@ export default function MainSlider() {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] mb-10 mt-12">
         {/* Image Slider Section */}
         <div className="overflow-hidden">
           <Slider {...settings} className="mb-10">
