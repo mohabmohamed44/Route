@@ -8,7 +8,7 @@ import appStore from "../../assets/app-store.png";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-200 py-6 px-4 w-full flex flex-col bottom-0 start-0 end-0">
+    <footer className="bg-gray-200 py-6 px-4 w-full flex flex-col bottom-0 start-0 end-0 mt-auto">
       {/*  First Part */}
       <div className="flex flex-col space-y-3 container text-start mx-auto">
         <h2 className="text-2xl font-semibold text-gray-800">
@@ -49,7 +49,7 @@ export default function Footer() {
             <img
               src={appStore}
               alt="Download on App Store"
-              className="h-14 w-24"
+              className="h-14"
             />
           </a>
           <a href="#" className="inline-block">
