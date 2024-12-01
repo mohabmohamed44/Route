@@ -80,7 +80,7 @@ export default function NavBar() {
           {token ? (
             <button
               onClick={logout} // Added logout handler
-              className="text-sm text-gray-600 hover:text-gray-900 hover:underline"
+              className="text-sm text-gray-600 font-semibold hover:text-gray-900 hover:underline"
             >
               Logout
             </button>

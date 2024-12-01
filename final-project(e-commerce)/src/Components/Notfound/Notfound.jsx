@@ -8,7 +8,7 @@ export default function Notfound() {
       <img
         src={notFound}
         alt="Not Found"
-        className="w-1/2 max-w-md lg:max-w-lg" // Tailwind utilities to adjust size
+        className="w-1/2 max-w-md lg:max-w-lg"
       />
       <h1 className="text-3xl font-bold text-gray-800 mt-6">Page Not Found</h1>
       <p className="text-gray-600 text-lg mt-2">

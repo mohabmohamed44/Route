@@ -77,11 +77,11 @@ export default function Products() {
             onMouseLeave={() => setHoveredProduct(null)}
           >
             <Link to={`/productDetails/${product._id}/${product.category.name}`} className="block">
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden h-full">
                 <img
                   src={product.imageCover}
                   alt={product.title}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                  className="w-full h-64 object-contain group-hover:scale-110 transition-transform duration-300"
                 />
                 {product.priceAfterDiscount ? (
                   <span className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
