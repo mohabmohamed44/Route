@@ -2,25 +2,48 @@ import React, { useState, useEffect } from "react";
 import Style from "./CategorySlider.module.css";
 import Slider from "react-slick";
 import axios from "axios";
+import {Bars} from "react-loader-spinner";
 
 export default function CategorySlider() {
   const [categories, setCategories] = useState(null);
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   function getCategories() {
+    setLoading(true);
     axios
       .get(`https://ecommerce.routemisr.com/api/v1/categories`)
       .then((res) => {
         console.log(res.data.data);
         setCategories(res.data.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
+        setError(error);
       });
   }
 
   useEffect(() => {
     getCategories();
   }, []);
+
+  if(loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Bars />
+      </div>
+    )
+  }
+
+  if(error) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-2xl text-red-500">Error</p>
+      </div>
+    )
+  }
+
 
   let settings = {
     dots: true,

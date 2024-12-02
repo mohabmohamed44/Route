@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import {Bars} from "react-loader-spinner";
 
 export default function ProductDetails() {
   const [productDetails, setProductDetails] = useState(null);
@@ -59,7 +60,9 @@ export default function ProductDetails() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500"></div>
+        {/* <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500">
+        </div> */}
+        <Bars/>
       </div>
     );
   }

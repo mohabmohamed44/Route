@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Bars } from "react-loader-spinner";
 
 export default function Brands() {
   const [brands, setBrands] = useState([]); // State to store brands data
@@ -27,7 +28,8 @@ export default function Brands() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"></div>
+        {/* <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"></div> */}
+        <Bars/>
       </div>
     );
   }

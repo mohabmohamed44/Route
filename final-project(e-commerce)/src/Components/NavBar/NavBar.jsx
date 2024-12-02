@@ -65,16 +65,16 @@ export default function NavBar() {
         <div className="hidden md:flex items-center space-x-6 rtl:space-x-reverse">
           <ul className="flex gap-5">
             <li>
-              <i className="fab fa-facebook-f cursor-pointer hover:text-gray-900 transition-colors"></i>
+              <i className="fab fa-facebook-f cursor-pointer hover:text-gray-900 transition-colors text-[#4267B2]"></i>
             </li>
             <li>
-              <i className="fab fa-twitter cursor-pointer hover:text-gray-900 transition-colors"></i>
+              <i className="fab fa-twitter cursor-pointer hover:text-gray-900 transition-colors text-[#1DA1F2] "></i>
             </li>
             <li>
-              <i className="fab fa-linkedin cursor-pointer hover:text-gray-900 transition-colors"></i>
+              <i className="fab fa-linkedin cursor-pointer hover:text-gray-900 transition-colors text-[#0a66c2] "></i>
             </li>
             <li>
-              <i className="fab fa-tiktok cursor-pointer hover:text-gray-900 transition-colors"></i>
+              <i className="fab fa-tiktok cursor-pointer hover:text-gray-900 transition-colors text-[#000000] "></i>
             </li>
           </ul>
           {token ? (
@@ -178,16 +178,16 @@ export default function NavBar() {
           <li className="py-2">
             <ul className="flex gap-5 justify-center">
               <li>
-                <i className="fab fa-facebook-f cursor-pointer hover:text-gray-900 transition-colors"></i>
+                <i className="fab fa-facebook-f cursor-pointer hover:text-gray-900 transition-colors text-[#4267B2]"></i>
               </li>
               <li>
-                <i className="fab fa-twitter cursor-pointer hover:text-gray-900 transition-colors"></i>
+                <i className="fab fa-twitter cursor-pointer hover:text-gray-900 transition-colors text-[#1DA1F2]"></i>
               </li>
               <li>
-                <i className="fab fa-linkedin cursor-pointer hover:text-gray-900 transition-colors"></i>
+                <i className="fab fa-linkedin cursor-pointer hover:text-gray-900 transition-colors text-[#0a66c2]"></i>
               </li>
               <li>
-                <i className="fab fa-tiktok cursor-pointer hover:text-gray-900 transition-colors"></i>
+                <i className="fab fa-tiktok cursor-pointer hover:text-gray-900 transition-colors text-[#000000]"></i>
               </li>
             </ul>
           </li>
