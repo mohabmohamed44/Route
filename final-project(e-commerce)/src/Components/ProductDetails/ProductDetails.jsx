@@ -84,7 +84,7 @@ export default function ProductDetails() {
           <img
             src={productDetails.imageCover || "/default-placeholder.jpg"}
             alt={productDetails.title || "Product Image"}
-            className="max-w-full h-auto object-cover rounded-lg shadow-lg"
+            className="max-w-full h-full object-cover rounded-lg shadow-lg"
           />
         </div>
         <div className="space-y-4 flex flex-col text-start w-full items-center justify-center">
