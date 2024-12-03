@@ -27,7 +27,7 @@ export default function Categories() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Bars color="#4A90E2" height={80} width={80} />
+        <Bars height={80} width={80} />
       </div>
     );
   }
