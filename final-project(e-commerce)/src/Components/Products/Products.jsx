@@ -1,52 +1,63 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query"; // Importing useQuery
 import axios from "axios";
 import { Bars } from "react-loader-spinner";
+import { cartContext } from "../../Context/CartContext";
+import toast from "react-hot-toast";
+
+// Fetch function to get products
+const fetchProducts = async () => {
+  const res = await axios.get("https://ecommerce.routemisr.com/api/v1/products");
+  return res.data.data;
+};
 
 export default function Products() {
-  const [products, setProducts] = useState([]);
   const [hoveredProduct, setHoveredProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  function getProducts() {
-    setLoading(true);
-    axios
-      .get(`https://ecommerce.routemisr.com/api/v1/products`)
-      .then((res) => {
-        console.log(res.data.data);
-        setProducts(res.data.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(error);
-        setLoading(false);
-      });
+  // Updated useQuery with object syntax
+  const { data: products, isLoading, isError, refetch } = useQuery({
+    queryKey: ["products"], // Query key
+    queryFn: fetchProducts, // Query function
+    onError: (error) => {
+      console.error("Error fetching products:", error);
+    },
+    
+  });
+
+
+  // Cart Context
+  let {addToCart} = useContext(cartContext);
+
+  // function to handle add To Cart Logic if product added or not.
+  async function addProductToCart(id){
+    let flag = await addToCart(id);
+    console.log(flag);
+    if(flag){
+      toast.success("Product added successfully to your Cart");
+    } else {
+      toast.error("Error to add Product in your Cart");
+    }
   }
 
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   // Loading Component
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        {/* <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"></div> */}
-        <Bars/>
+        <Bars />
       </div>
     );
   }
 
   // Error Handling
-  if (error) {
+  if (isError) {
     return (
       <div className="flex justify-center items-center h-screen text-red-500">
         <div className="text-center">
           <p>Error loading products</p>
           <button
-            onClick={getProducts}
+            onClick={refetch} // Using React Query's refetch to try again
             className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
           >
             Try Again
@@ -67,7 +78,7 @@ export default function Products() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
+      <h1 className="text-2xl font-medium mb-8 mt-4 text-center text-gray-800">
         Our Products
       </h1>
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6">
@@ -141,6 +152,7 @@ export default function Products() {
                 className="w-full bg-green-600 text-white py-3 hover:bg-green-700 transition-colors duration-300 flex items-center justify-center space-x-2"
                 onClick={() => {
                   // Add to cart logic here
+                  addProductToCart(product._id);
                   console.log(`Added ${product.title} to cart`);
                 }}
               >

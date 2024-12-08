@@ -3,10 +3,10 @@ import { useFormik } from "formik";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import * as Yup from "yup";
-import { UserContext } from "../../Context/UserContext"; 
+import { UserContext } from "../../Context/UserContext";
 
 export default function Login() {
-  const { setToken } = useContext(UserContext); 
+  const { setToken } = useContext(UserContext);
   const [errorApi, setErrorApi] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   let navigate = useNavigate();
@@ -115,15 +115,26 @@ export default function Login() {
           </div>
 
           <button
-            disabled={!formikLogin.isValid || !formikLogin.dirty ? true: false}
+            disabled={!formikLogin.isValid || !formikLogin.dirty ? true : false}
             type="submit"
             className="w-full text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-colors duration-200"
           >
             {isLoading ? <i className="fas fa-spin fa-spinner"></i> : "Login"}
           </button>
         </form>
+        <div className="flex items-center justify-between mt-5">
+          <Link
+            to="/register"
+            className="text-green-600 hover:text-green-800"
+          >
+            {" "}
+            Don't have an account?
+          </Link>
+          <Link to="/forgot" className="text-green-600 hover:text-green-800">
+            Forgot Password ?
+          </Link>
+        </div>
       </div>
-      <Link to="/register" className="text-green-600 hover:text-green-800"> Don't have an account?</Link>
     </div>
   );
 }

@@ -215,8 +215,10 @@ export default function Register() {
             )}
           </button>
         </form>
+        <div className="text-start mt-5">
+          <Link to="/login" className="text-green-600 hover:text-green-800">Already have an account?</Link>
+        </div>
       </div>
-      <Link to="/login" className="text-green-600 hover:text-green-800">Already have an account?</Link>
     </div>
   );
 }
