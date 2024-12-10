@@ -170,7 +170,7 @@ export default function Cart() {
                     </div>
                   </td>
                   <td className="px-6 py-4 font-semibold text-gray-900">
-                    {product.product.price} EGP
+                    {product.price} EGP
                   </td>
                   <td className="px-6 py-4">
                     <button
