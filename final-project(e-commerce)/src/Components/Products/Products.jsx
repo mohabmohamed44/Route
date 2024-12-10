@@ -1,42 +1,48 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query"; // Importing useQuery
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import ghost from '../../assets/ghost-img.png';
 import { Bars } from "react-loader-spinner";
 import { cartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 
 // Fetch function to get products
 const fetchProducts = async () => {
-  const res = await axios.get("https://ecommerce.routemisr.com/api/v1/products");
+  const res = await axios.get(
+    "https://ecommerce.routemisr.com/api/v1/products"
+  );
   return res.data.data;
 };
 
 export default function Products() {
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [wishlist, setWishlist] = useState({});
 
   // Updated useQuery with object syntax
-  const { data: products, isLoading, isError, refetch } = useQuery({
-    queryKey: ["products"], // Query key
-    queryFn: fetchProducts, // Query function
+  const {
+    data: products,
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchProducts,
     onError: (error) => {
       console.error("Error fetching products:", error);
     },
-    
   });
 
-
   // Cart Context
-  let {addToCart} = useContext(cartContext);
+  let { addToCart, addToWishlist } = useContext(cartContext);
 
-  // function to handle add To Cart Logic if product added or not.
-  async function addProductToCart(id){
+  // Function to handle add To Cart Logic
+  async function addProductToCart(id) {
     let flag = await addToCart(id);
-    console.log(flag);
-    if(flag){
+    if (flag) {
       toast.success("Product added successfully to your Cart");
     } else {
-      toast.error("Error to add Product in your Cart");
+      toast.error("Error adding Product to your Cart");
     }
   }
 
@@ -55,9 +61,9 @@ export default function Products() {
     return (
       <div className="flex justify-center items-center h-screen text-red-500">
         <div className="text-center">
-          <p>Error loading products</p>
+          <img src={ghost} alt="not found" />
           <button
-            onClick={refetch} // Using React Query's refetch to try again
+            onClick={refetch}
             className="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
           >
             Try Again
@@ -89,7 +95,24 @@ export default function Products() {
             onMouseEnter={() => setHoveredProduct(product._id)}
             onMouseLeave={() => setHoveredProduct(null)}
           >
-            <Link to={`/productDetails/${product._id}/${product.category.name}`} className="block">
+            {/* Wishlist Heart Icon */}
+            <button
+              onClick={() => addToWishlist(product._id)}
+              className="absolute top-4 left-4 z-10 bg-white/80 p-2 rounded-full shadow-md"
+            >
+              <i
+                className={`fas fa-heart h-5 w-5 transition-colors duration-300 ${
+                  wishlist[product._id]
+                    ? "text-red-500 hover:text-red-600"
+                    : "text-gray-500 hover:text-red-500"
+                }`}
+              ></i>
+            </button>
+
+            <Link
+              to={`/productDetails/${product._id}/${product.category.name}`}
+              className="block"
+            >
               <div className="relative overflow-hidden h-full">
                 <img
                   src={product.imageCover}
@@ -151,9 +174,7 @@ export default function Products() {
               <button
                 className="w-full bg-green-600 text-white py-3 hover:bg-green-700 transition-colors duration-300 flex items-center justify-center space-x-2"
                 onClick={() => {
-                  // Add to cart logic here
                   addProductToCart(product._id);
-                  console.log(`Added ${product.title} to cart`);
                 }}
               >
                 <i className="fas fa-shopping-cart mr-2"></i>

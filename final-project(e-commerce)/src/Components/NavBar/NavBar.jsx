@@ -1,8 +1,10 @@
 import React, { useState, useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link,NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/freshcart-logo.svg";
 import { UserContext } from "../../Context/UserContext";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 export default function NavBar() {
   const { setToken, token } = useContext(UserContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,6 +67,11 @@ export default function NavBar() {
         <div className="hidden md:flex items-center space-x-6 rtl:space-x-reverse">
           <ul className="flex gap-5">
             <li>
+              <Link to="/whishlist">
+                <i className="fas fa-heart cursor-pointer text-red-600"></i>
+              </Link>
+            </li>
+            <li>
               <i className="fab fa-facebook-f cursor-pointer hover:text-gray-900 transition-colors text-[#4267B2]"></i>
             </li>
             <li>
@@ -74,7 +81,7 @@ export default function NavBar() {
               <i className="fab fa-linkedin cursor-pointer hover:text-gray-900 transition-colors text-[#0a66c2] "></i>
             </li>
             <li>
-              <i className="fab fa-tiktok cursor-pointer hover:text-gray-900 transition-colors text-[#000000] "></i>
+              <i className="fab fa-github cursor-pointer hover:text-gray-900 transition-colors text-[#000000] "></i>
             </li>
           </ul>
           {token ? (
@@ -187,7 +194,7 @@ export default function NavBar() {
                 <i className="fab fa-linkedin cursor-pointer hover:text-gray-900 transition-colors text-[#0a66c2]"></i>
               </li>
               <li>
-                <i className="fab fa-tiktok cursor-pointer hover:text-gray-900 transition-colors text-[#000000]"></i>
+                <i className="fab fa-github cursor-pointer hover:text-gray-900 transition-colors text-[#000000]"></i>
               </li>
             </ul>
           </li>

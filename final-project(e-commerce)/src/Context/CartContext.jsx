@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export const cartContext = createContext();
 
@@ -7,6 +8,7 @@ export function CartContextProvider({ children }) {
   const [numOfCartItems, setNumOfCartItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [productsCart, setProductsCart] = useState([]);
+  const [wishlistItems, setWishlistItems] = useState([]);
 
   const token = localStorage.getItem("token");
 
@@ -23,10 +25,12 @@ export function CartContextProvider({ children }) {
       )
       .then((res) => {
         console.log(res);
+        toast.success("Product added successfully to your Cart");
         getCart();
         return true;
       })
       .catch((err) => {
+        toast.error(err);
         console.log(err);
         return false;
       });
@@ -75,7 +79,7 @@ export function CartContextProvider({ children }) {
       )
       .then((res) => {
         console.log(res);
-        getCart(); //BUG::Fix this 
+        getCart();
       })
       .catch((err) => {
         console.log(err);
@@ -91,11 +95,76 @@ export function CartContextProvider({ children }) {
       })
       .then((res) => {
         console.log(res);
+        toast.success("Product deleted successfully");
         getCart();
       })
       .catch((err) => {
+        toast.error("Failed to delete product");
         console.log(err);
       });
+  }
+
+  // Wishlist Functions
+  async function addToWishlist(productId) {
+    try {
+      const res = await axios.post(
+        `https://ecommerce.routemisr.com/api/v1/wishlist`,
+        { productId },
+        {
+          headers: {
+            token,
+          },
+        }
+      );
+      console.log("Added to Wishlist:", res.data);
+      toast.success("Added to Wishlist!");
+      getWishlist();
+      return true;
+    } catch (err) {
+      toast.error(err);
+      console.error("Error adding to wishlist:", err);
+      return false;
+    }
+  }
+
+  async function removeFromWishlist(productId) {
+    try {
+      const res = await axios.delete(
+        `https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`,
+        {
+          headers: {
+            token,
+          },
+        }
+      );
+      console.log("Removed from Wishlist:", res.data);
+      toast.success("Removed from Wishlist!");
+      getWishlist();
+      return true;
+    } catch (err) {
+      toast.error("Failed to remove from Wishlist!");
+      console.error("Error removing from wishlist:", err);
+      return false;
+    }
+  }
+
+  async function getWishlist() {
+    try {
+      const res = await axios.get(
+        `https://ecommerce.routemisr.com/api/v1/wishlist`,
+        {
+          headers: {
+            token,
+          },
+        }
+      );
+      console.log("Wishlist Response:", res.data);
+      setWishlistItems(res.data.data || []);
+      return true;
+    } catch (err) {
+      console.error("Error fetching wishlist:", err);
+      return false;
+    }
   }
 
   return (
@@ -108,6 +177,10 @@ export function CartContextProvider({ children }) {
         numOfCartItems,
         totalPrice,
         productsCart,
+        addToWishlist,
+        removeFromWishlist,
+        getWishlist,
+        wishlistItems,
       }}
     >
       {children}
