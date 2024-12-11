@@ -5,10 +5,6 @@ import axios from "axios";
 import { Helmet } from "react-helmet";
 
 export default function SpecifBrand() {
-  // Removing localStorage items
-  localStorage.removeItem("code");
-  localStorage.removeItem("verifycode");
-
   // State variables to manage brand data and loading state
   const [specificBrand, setSpecificBrand] = useState({});
   const [isLoading, setIsLoading] = useState(true);
