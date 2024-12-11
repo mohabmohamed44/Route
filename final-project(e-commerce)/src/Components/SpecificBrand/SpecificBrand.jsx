@@ -1,86 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";  // Import the useQuery hook
+import { useQuery } from "@tanstack/react-query";
 import { Bars } from "react-loader-spinner";
-import axios from "axios";
-
-// Function to fetch brand data
-const fetchBrand = async (brandId) => {
-  const { data } = await axios.get(
-    `https://ecommerce.routemisr.com/api/v1/brands/${brandId}`
-  );
-  return data.data; // Adjust according to the response structure
-};
-
-
-// BUG: Fix Specific Brand please 
-
+import { cartContext } from "../../Context/CartContext";
 
 export default function SpecificBrand() {
   const { brandId } = useParams();
-  const [search, setSearch] = useState("");
-  
-  // Use React Query to fetch data with object syntax
+  const { getBrandDetail } = useContext(cartContext);
+
   const { data: brand, error, isLoading } = useQuery({
-    queryKey: ["brand", brandId],  // Key to identify this query
-    queryFn: () => fetchBrand(brandId),  // Function to fetch the brand data
-    enabled: !!brandId,  // Ensure this query only runs when brandId is available
+    queryKey: ["brand", brandId],  
+    queryFn: () => getBrandDetail(brandId), 
+    enabled: !!brandId,
   });
 
-  // Filter products based on search query
-  const filtered = brand?.products?.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase())
-  ) || [];
-
   return (
-    <div>
+    <div className="container">
       <h2 className="text-2xl text-center mb-10 mt-12">Specific Brand</h2>
 
       {/* Loading State */}
       {isLoading && (
-        <div className="flex justify-center items-center">
+        <div className="d-flex justify-content-center align-items-center h-screen">
           <Bars />
         </div>
       )}
 
       {/* Error State */}
-      {error && <p className="text-center text-red-500">Failed to fetch brand data.</p>}
+      {error && <p className="text-center text-danger">Failed to fetch brand data.</p>}
 
       {/* Brand Data */}
       {!isLoading && !error && brand && (
-        <div>
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-bold">{brand.name}</h3>
-            <img
-              src={brand.image}
-              alt={brand.name}
-              className="w-32 h-32 object-contain mx-auto"
+        <div className='row d-flex justify-content-evenly mt-4'>
+          <div className='col-11 col-md-3 mt-2 card'>
+            <img 
+              className='w-100 pt-2' 
+              src={data.image} 
+              alt={`${data.name} logo`} 
             />
-            <p>Brand created on: {new Date(brand.createdAt).toLocaleDateString()}</p>
+            <h1 className='ms-2 text-center'>{data.name}</h1>
           </div>
-
-          {/* Search Filter */}
-          <div className="flex justify-center mb-6">
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search products"
-              className="border p-2 rounded w-1/2"
-            />
-          </div>
-
-          {filtered.length > 0 ? (
-            filtered.map((product) => (
-              <div key={product._id} className="bg-white p-4 mb-6 rounded shadow-md">
-                <h4 className="font-semibold">{product.name}</h4>
-                <p>{product.description}</p>
-                <p className="font-bold">${product.price}</p>
-              </div>
-            ))
-          ) : (
-            <p className="text-center">No products found for this brand.</p>
-          )}
         </div>
       )}
     </div>

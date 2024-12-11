@@ -25,12 +25,10 @@ export function CartContextProvider({ children }) {
       )
       .then((res) => {
         console.log(res);
-        toast.success("Product added successfully to your Cart");
         getCart();
         return true;
       })
       .catch((err) => {
-        toast.error(err);
         console.log(err);
         return false;
       });
@@ -167,6 +165,12 @@ export function CartContextProvider({ children }) {
     }
   }
 
+  async function getBrandDetail(id) {
+    return axios.get(`https://ecommerce.routemisr.com/api/v1/brands/${id}`)
+    .then((res) => res)
+    .catch((error) => error);
+  }
+
   return (
     <cartContext.Provider
       value={{
@@ -181,6 +185,7 @@ export function CartContextProvider({ children }) {
         removeFromWishlist,
         getWishlist,
         wishlistItems,
+        getBrandDetail,
       }}
     >
       {children}
