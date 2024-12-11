@@ -29,7 +29,7 @@ export default function Brands() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Bars height="80" width="80" color="#4A90E2" ariaLabel="loading-indicator" />
+        <Bars height="80" width="80" ariaLabel="loading-indicator" />
       </div>
     );
   }
