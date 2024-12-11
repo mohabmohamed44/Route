@@ -1,46 +1,87 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { Bars } from "react-loader-spinner";
-import { cartContext } from "../../Context/CartContext";
+import axios from "axios";
+import { Helmet } from "react-helmet";
 
-export default function SpecificBrand() {
-  const { brandId } = useParams();
-  const { getBrandDetail } = useContext(cartContext);
+export default function SpecifBrand() {
+  // Removing localStorage items
+  localStorage.removeItem("code");
+  localStorage.removeItem("verifycode");
 
-  const { data: brand, error, isLoading } = useQuery({
-    queryKey: ["brand", brandId],  
-    queryFn: () => getBrandDetail(brandId), 
-    enabled: !!brandId,
-  });
+  // State variables to manage brand data and loading state
+  const [specificBrand, setSpecificBrand] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Extracting the brand ID from URL parameters
+  let param = useParams();
+  let id = param.id;
+
+  // Function to fetch brand details
+  async function getSpecificBrands(id) {
+    try {
+      const { data } = await axios.get(
+        `https://ecommerce.routemisr.com/api/v1/brands/${id}`
+      );
+      setSpecificBrand(data.data); // Store brand data in state
+      setIsLoading(false); // Update loading state to false
+    } catch (error) {
+      console.error("Error fetching brand details:", error);
+      setIsLoading(false); // Set loading to false in case of an error
+    }
+  }
+
+  // Fetch brand details when component mounts or ID changes
+  useEffect(() => {
+    getSpecificBrands(id);
+  }, [id]); // Dependency on `id` to fetch data when it changes
 
   return (
-    <div className="container">
-      <h2 className="text-2xl text-center mb-10 mt-12">Specific Brand</h2>
+    <>
+      {/* Helmet for SEO meta tags */}
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta
+          name="description"
+          content={`Discover our exclusive collection from Brand ${specificBrand.name}. Explore quality products that define style and elegance.`}
+        />
+        <title>{specificBrand.name}</title>
+      </Helmet>
 
-      {/* Loading State */}
-      {isLoading && (
-        <div className="d-flex justify-content-center align-items-center h-screen">
-          <Bars />
+      {/* Loading Spinner */}
+      {isLoading ? (
+        <div className="flex justify-center items-center h-screen">
+          <Bars
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="Bars-loading"
+          />
         </div>
-      )}
-
-      {/* Error State */}
-      {error && <p className="text-center text-danger">Failed to fetch brand data.</p>}
-
-      {/* Brand Data */}
-      {!isLoading && !error && brand && (
-        <div className='row d-flex justify-content-evenly mt-4'>
-          <div className='col-11 col-md-3 mt-2 card'>
-            <img 
-              className='w-100 pt-2' 
-              src={data.image} 
-              alt={`${data.name} logo`} 
-            />
-            <h1 className='ms-2 text-center'>{data.name}</h1>
+      ) : (
+        // Display the brand card with image and name
+        <div className="container mx-auto pt-6">
+          <div className="card mb-6 shadow-lg rounded-xl overflow-hidden">
+            {/* Grid layout for mobile and desktop */}
+            <div className="flex flex-col items-center p-6">
+              {/* Brand Image */}
+              <div className="flex justify-center mb-4">
+                <img
+                  src={specificBrand.image}
+                  className="w-full h-64 object-cover rounded-md"
+                  alt={specificBrand.name}
+                />
+              </div>
+              {/* Brand Info */}
+              <div className="text-center">
+                <h1 className="text-3xl font-semibold text-gray-800">
+                  {specificBrand.name}
+                </h1>
+              </div>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

@@ -9,27 +9,27 @@ const fetchBrands = async () => {
   const { data } = await axios.get(
     "https://ecommerce.routemisr.com/api/v1/brands"
   );
-  return data.data;
+  return data.data; // Ensure this matches the API response structure
 };
 
 export default function Brands() {
   // Use React Query to manage data fetching
-  const { 
-    data: brands = [], 
-    isLoading, 
-    error 
+  const {
+    data: brands = [],
+    isLoading,
+    error,
   } = useQuery({
-    queryKey: ['brands'],
+    queryKey: ["brands"],
     queryFn: fetchBrands,
     staleTime: 5 * 60 * 1000, // 5 minutes
-    gcTime: 30 * 60 * 1000 // 30 minutes
+    gcTime: 30 * 60 * 1000, // 30 minutes
   });
 
   // Loading state
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Bars />
+        <Bars height="80" width="80" color="#4A90E2" ariaLabel="loading-indicator" />
       </div>
     );
   }
@@ -56,10 +56,10 @@ export default function Brands() {
           >
             <img
               src={brand.image}
-              alt={brand.name}
+              alt={brand.name || "Brand Logo"}
               className="w-32 h-32 object-contain mb-4"
             />
-            <span className="text-center font-medium">{brand.name}</span>
+            <span className="text-center font-medium">{brand.name || "Unnamed Brand"}</span>
           </Link>
         ))}
       </div>

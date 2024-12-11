@@ -92,7 +92,7 @@ export default function Wishlist() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Bars height="50" width="50" ariaLabel="loading" />
+        <Bars ariaLabel="loading" />
       </div>
     );
   }
