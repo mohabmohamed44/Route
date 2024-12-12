@@ -15,6 +15,7 @@ import WhishList from "./Components/WishList/WishList";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import SpecificBrand from "./Components/SpecificBrand/SpecificBrand";
+import Payment from "./Components/Payment/Payment";
 import { UserContextProvider } from "./Context/UserContext";
 import { CartContextProvider } from "./Context/CartContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
       { path: "productDetails/:id/:category", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "brands/:id", element: <ProtectedRoute><SpecificBrand /></ProtectedRoute> },
       { path:  "whishlist", element: <ProtectedRoute><WhishList /></ProtectedRoute> },
+      {path: "payment", element: <ProtectedRoute><Payment /></ProtectedRoute>},
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       { path:  "forgot", element: <ForgotPassword/>},

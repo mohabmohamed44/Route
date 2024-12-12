@@ -9,7 +9,7 @@ export function CartContextProvider({ children }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [productsCart, setProductsCart] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
-
+  const [cartId, setCartId] = useState(null);
   const token = localStorage.getItem("token");
 
   async function addToCart(productId) {
@@ -45,11 +45,12 @@ export function CartContextProvider({ children }) {
         }
       );
       console.log("Cart Response:", res.data);
-
+      console.log(res.data.cartId);
+      setCartId(res.data.cartId);
       const products = res.data.data.products || [];
       setProductsCart(products);
       setTotalPrice(res.data.data.totalCartPrice);
-
+      
       // Calculate total number of items in the cart
       const totalItems = products.reduce(
         (total, product) => total + product.count,
@@ -102,7 +103,7 @@ export function CartContextProvider({ children }) {
       });
   }
 
-  // Wishlist Functions
+  // Wishlist Functions => add To wishList
   async function addToWishlist(productId) {
     try {
       const res = await axios.post(
@@ -124,7 +125,7 @@ export function CartContextProvider({ children }) {
       return false;
     }
   }
-
+  // Crud:: Remove From Wishlist
   async function removeFromWishlist(productId) {
     try {
       const res = await axios.delete(
@@ -145,7 +146,7 @@ export function CartContextProvider({ children }) {
       return false;
     }
   }
-
+  // get Logged User WishList 
   async function getWishlist() {
     try {
       const res = await axios.get(
@@ -165,10 +166,48 @@ export function CartContextProvider({ children }) {
     }
   }
 
+  // Delete Cart of a User
+  async function deleteCart() {
+    try {
+      const res = await axios.delete(`https://ecommerce.routemisr.com/api/v1/cart`, {
+        headers: {
+          token,
+        },
+      });
+      console.log("Cart Deleted:", res.data);
+      getCart();
+      return true;
+    } catch (err) {
+      console.error("Error deleting cart:", err);
+      return false;
+    }
+  }
+
+
+  // get Brand Detail
   async function getBrandDetail(id) {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/brands/${id}`)
     .then((res) => res)
     .catch((error) => error);
+  }
+
+  // Payment Functions
+  async function onlinePayment(cartId, shippingAddress) {
+    const url = `${window.location.protocol}//${window.location.host}`;
+    console.log(url);
+    return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`, {
+        shippingAddress: shippingAddress,
+    }, { headers })
+        .then((res) => res)
+        .catch((error) => error);
+  }
+  // Cash Payment
+  async function cashPayment(cartId, shippingAddress) {
+    return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}`, {
+        shippingAddress: shippingAddress,
+    }, { headers })
+        .then((res) => res)
+        .catch((error) => error);
   }
 
   return (
@@ -186,6 +225,10 @@ export function CartContextProvider({ children }) {
         getWishlist,
         wishlistItems,
         getBrandDetail,
+        deleteCart,
+        onlinePayment,
+        cashPayment,
+        cartId,
       }}
     >
       {children}
