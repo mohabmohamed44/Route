@@ -200,15 +200,7 @@ export function CartContextProvider({ children }) {
     }, { headers })
         .then((res) => res)
         .catch((error) => error);
-  }
-  // Cash Payment
-  async function cashPayment(cartId, shippingAddress) {
-    return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/${cartId}`, {
-        shippingAddress: shippingAddress,
-    }, { headers })
-        .then((res) => res)
-        .catch((error) => error);
-  }
+  }  
 
   return (
     <cartContext.Provider
@@ -227,7 +219,6 @@ export function CartContextProvider({ children }) {
         getBrandDetail,
         deleteCart,
         onlinePayment,
-        cashPayment,
         cartId,
       }}
     >

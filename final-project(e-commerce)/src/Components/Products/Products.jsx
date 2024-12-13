@@ -101,7 +101,7 @@ export default function Products() {
               className="absolute top-4 left-4 z-10 bg-white/80 p-2 rounded-full shadow-md"
             >
               <i
-                className={`fas fa-heart h-5 w-5 transition-colors duration-300 ${
+                className={`fa-regular fa-heart h-5 w-5 transition-colors duration-300 ${
                   wishlist[product._id]
                     ? "text-red-500 hover:text-red-600"
                     : "text-gray-500 hover:text-red-500"
