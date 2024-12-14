@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import ghost from '../../assets/ghost-img.png';
+import ghost from "../../assets/ghost-img.png";
 import { Bars } from "react-loader-spinner";
-import { cartContext } from "../../Context/CartContext";
+import { cartContext } from "../../context/CartContext";
 import toast from "react-hot-toast";
 
 // Fetch function to get products
@@ -18,6 +18,19 @@ const fetchProducts = async () => {
 export default function Products() {
   const [hoveredProduct, setHoveredProduct] = useState(null);
   const [wishlist, setWishlist] = useState({});
+
+  // Cart Context
+  let { addToCart, addToWishlist } = useContext(cartContext);
+
+  // Function to toggle wishlist status
+  const toggleWishlist = (id) => {
+    setWishlist((prev) => ({
+      ...prev,
+      [id]: !prev[id], // toggle the wishlist status for the product
+    }));
+    // assuming this adds the product to your server-side wishlist
+    addToWishlist(id); 
+  };
 
   // Updated useQuery with object syntax
   const {
@@ -33,9 +46,6 @@ export default function Products() {
     },
   });
 
-  // Cart Context
-  let { addToCart, addToWishlist } = useContext(cartContext);
-
   // Function to handle add To Cart Logic
   async function addProductToCart(id) {
     let flag = await addToCart(id);
@@ -45,7 +55,6 @@ export default function Products() {
       toast.error("Error adding Product to your Cart");
     }
   }
-
 
   // Loading Component
   if (isLoading) {
@@ -97,13 +106,15 @@ export default function Products() {
           >
             {/* Wishlist Heart Icon */}
             <button
-              onClick={() => addToWishlist(product._id)}
-              className="absolute top-4 left-4 z-10 bg-white/80 p-2 rounded-full shadow-md"
+              onClick={() => toggleWishlist(product._id)}
+              className={`absolute top-4 left-4 z-10 bg-white/80 p-2 rounded-full shadow-md ${
+                wishlist[product._id] ? "bg-red-500 text-white" : "bg-gray-200"
+              }`}
             >
               <i
-                className={`fa-regular fa-heart h-5 w-5 transition-colors duration-300 ${
+                className={`fa-solid fa-heart h-5 w-5 transition-colors duration-300 ${
                   wishlist[product._id]
-                    ? "text-red-500 hover:text-red-600"
+                    ? "text-red-500 hover:text-gray-100"
                     : "text-gray-500 hover:text-red-500"
                 }`}
               ></i>

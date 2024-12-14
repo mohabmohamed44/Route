@@ -7,7 +7,7 @@ import { Package, DollarSign, Calendar, RefreshCw } from 'lucide-react';
 // Fetch orders function
 async function fetchOrders() {
   const token = localStorage.getItem('token');
-  const userId = localStorage.getItem('userId'); // Get the userId from localStorage
+  // const userId = localStorage.getItem('userId'); // Get the userId from localStorage
   
   if (!token || !userId) {
     throw new Error('Authentication token or user ID is missing');
