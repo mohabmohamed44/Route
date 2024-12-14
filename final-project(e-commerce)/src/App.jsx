@@ -25,6 +25,7 @@ import "./App.css";
 import VerifyResetCode from "./Components/VerifyResetCode/VerifyResetCode";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import UpdatePassword from "./Components/UpdatePassword/UpdatePassword";
+import CategoryDetails from "./Components/CategoryDetails/CategoryDetails";
 
 // Create a React Query client instance
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
       { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
       { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
       { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
+      { path: "/categories/:id", element: <ProtectedRoute><CategoryDetails/></ProtectedRoute>},
       { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
       { path: "productDetails/:id/:category", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "brands/:id", element: <ProtectedRoute><SpecificBrand /></ProtectedRoute> },

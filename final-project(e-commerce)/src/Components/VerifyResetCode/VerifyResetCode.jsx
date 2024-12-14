@@ -17,7 +17,7 @@ export default function VerifyResetCode() {
   const [loading, setLoading] = useState(false);
   const [isResetCodeVerified, setIsResetCodeVerified] = useState(false);
 
-  async function handleVerifyResetCode(values, { setSubmitting }) {
+  async function handleVerifyResetCode(values, { setSubmitting, resetForm }) {
     const { resetCode } = values;
 
     setLoading(true);
@@ -26,8 +26,11 @@ export default function VerifyResetCode() {
         "https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode",
         { resetCode }
       );
-      toast.success("Reset code verified successfully!");
+      toast.success("Reset code verified successfully!", {
+        position: "bottom-center",
+      });
       setIsResetCodeVerified(true);
+      resetForm(); // Clear the reset code fields after submission
     } catch (err) {
       const errorMsg =
         err.response?.data?.message || "Invalid reset code. Please try again.";
@@ -94,7 +97,7 @@ export default function VerifyResetCode() {
               />
 
               {/* Submit Button */}
-              <div className="flex flex-col items-center">
+              <div className="relative flex flex-col items-center">
                 <button
                   type="submit"
                   className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
@@ -103,8 +106,11 @@ export default function VerifyResetCode() {
                   {loading ? <Bars height={20} width={20} color="#fff" /> : "Verify Code"}
                 </button>
 
-                {/* Toast Container Placeholder */}
-                <div id="toast-container" className="mt-4"></div>
+                {/* Toast Container Positioned Center of Button */}
+                <div
+                  id="toast-container"
+                  className="absolute top-12 left-1/2 transform -translate-x-1/2"
+                ></div>
               </div>
             </Form>
           );

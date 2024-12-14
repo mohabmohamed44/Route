@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Bars } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 export default function Categories() {
   const [categories, setCategories] = useState([]);
@@ -54,9 +55,10 @@ export default function Categories() {
       <div className="max-w-screen-lg mx-auto px-4 py-6">
         <div className="flex flex-wrap justify-center gap-4">
           {categories.map((category) => (
-            <div
+            <Link
               key={category.id}
-              className="flex flex-col items-center justify-center w-40 p-4 bg-white shadow-md rounded-lg border"
+              to={`/categories/${category.id}`} // Link to the dynamic route
+              className="flex flex-col items-center justify-center w-40 p-4 bg-white shadow-md rounded-lg border hover:bg-gray-100"
             >
               <img
                 src={category.image}
@@ -64,7 +66,7 @@ export default function Categories() {
                 className="w-full h-full rounded-md object-cover"
               />
               <p className="mt-2 text-lg font-medium">{category.name}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
