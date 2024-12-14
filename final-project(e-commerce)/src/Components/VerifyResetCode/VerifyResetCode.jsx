@@ -26,9 +26,7 @@ export default function VerifyResetCode() {
         "https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode",
         { resetCode }
       );
-      toast.success("Reset code verified successfully!", {
-        position: "bottom-center",
-      });
+      toast.success("Reset code verified successfully!");
       setIsResetCodeVerified(true);
     } catch (err) {
       const errorMsg =
