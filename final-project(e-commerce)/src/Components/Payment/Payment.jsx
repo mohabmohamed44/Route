@@ -27,7 +27,7 @@ export default function Payment() {
   const { cartId, deleteCart } = useContext(cartContext);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-
+  const [paymentType, setPaymentType] = useState(""); // Track selected payment type
   // Redirect if no cart
   useEffect(() => {
     if (!cartId) {
@@ -36,60 +36,105 @@ export default function Payment() {
     }
   }, [cartId, navigate]);
 
-  // Payment submission logic
   const cashPayment = async (values) => {
+    const apiObj = {
+      shippingAddress: {
+        details: values.details,
+        phone: values.phone,
+        city: values.city,
+      },
+    };
+
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      
+
       if (!token) {
         toast.error("Please log in to complete payment");
         navigate("/login");
         return;
       }
 
-      if (!cartId) {
-        toast.error("Your cart is empty");
-        navigate("/cart");
-        return;
-      }
-
       const response = await axios.post(
         `https://ecommerce.routemisr.com/api/v1/orders/${cartId}`,
-        { 
-          shippingAddress: {
-            details: values.details,
-            phone: values.phone,
-            city: values.city
-          }
-        },
-        { 
-          headers: { 
-            token,
-            'Content-Type': 'application/json'
-          } 
+        apiObj,
+        {
+          headers: { token },
         }
       );
 
-      if (response.data.status === "success") {
+      if (response.data.status) {
         toast.success("Payment completed successfully!");
-        clearCart(); // Clear the cart after successful payment
-        navigate("/allorders"); // Navigate to orders page
+        deleteCart(); // Clear the cart after successful payment
+        navigate("/allorders");
       } else {
         toast.error("Payment processing failed");
       }
     } catch (error) {
       console.error("Payment error:", error);
-      
       if (error.response) {
         toast.error(error.response.data.message || "Payment failed");
       } else if (error.request) {
         toast.error("No response from server. Check your connection.");
-      } else {
-        toast.error("An unexpected error occurred");
       }
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const onlinePayment = async (values) => {
+    const apiObj = {
+      shippingAddress: {
+        details: values.details,
+        phone: values.phone,
+        city: values.city,
+      },
+    };
+
+    try {
+      setIsLoading(true);
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        toast.error("Please log in to complete payment");
+        navigate("/login");
+        return;
+      }
+
+      const response = await axios.post(
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}`,
+        apiObj,
+        {
+          headers: { token },
+          params: {
+            url: "http://localhost:5173",
+          },
+        }
+      );
+
+      if (response.data.status) {
+        window.open(response.data.session.url, "_self");
+        deleteCart(); // Clear the cart after successful payment
+      } else {
+        toast.error("Failed to create checkout session");
+      }
+    } catch (error) {
+      console.error("Payment error:", error);
+      if (error.response) {
+        toast.error(error.response.data.message || "Payment failed");
+      } else if (error.request) {
+        toast.error("No response from server. Check your connection.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handlePayment = (values, type) => {
+    if (type === "cash") {
+      cashPayment(values);
+    } else if (type === "online") {
+      onlinePayment(values);
     }
   };
 
@@ -101,19 +146,19 @@ export default function Payment() {
       city: "",
     },
     validationSchema: PaymentSchema,
-    onSubmit: cashPayment,
+    onSubmit: (values) => {
+      handlePayment(values, paymentType);
+    },
   });
 
   // Render component
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl overflow-hidden">
         <div className="bg-green-500 text-white p-6 text-center">
           <CreditCard className="mx-auto mb-4" size={48} />
           <h2 className="text-3xl font-bold">Complete Payment</h2>
-          <p className="text-green-100 mt-2">
-            Enter your shipping details
-          </p>
+          <p className="text-green-100 mt-2">Enter your shipping details</p>
         </div>
 
         <form onSubmit={formik.handleSubmit} className="p-6 space-y-6">
@@ -192,31 +237,40 @@ export default function Payment() {
             )}
           </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={isLoading || !formik.isValid}
-            className="w-full bg-green-600 text-white p-3.5 rounded-lg hover:bg-green-700 
-            transition duration-300 ease-in-out transform hover:-translate-y-1 
-            focus:outline-none focus:ring-2 focus:ring-green-500 
-            disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isLoading ? (
-              <div className="flex justify-center items-center">
-                <Bars
-                  color="#ffffff"
-                  height={24}
-                  width={24}
-                  ariaLabel="loading"
-                />
-              </div>
-            ) : (
-              <span className="flex items-center justify-center">
-                <CreditCard className="mr-2" size={20} />
-                Complete Payment
-              </span>
-            )}
-          </button>
+          {/* Payment Buttons */}
+          <div className="flex justify-between gap-4">
+            <button
+              type="button"
+              onClick={() => {
+                setPaymentType("cash");
+                formik.handleSubmit();
+              }}
+              disabled={isLoading || !formik.isValid}
+              className="w-1/2 bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading && paymentType === "cash" ? (
+                <Bars color="#ffffff" height={24} width={24} ariaLabel="loading" />
+              ) : (
+                "Cash Payment"
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setPaymentType("online");
+                formik.handleSubmit();
+              }}
+              disabled={isLoading || !formik.isValid}
+              className="w-1/2 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading && paymentType === "online" ? (
+                <Bars color="#ffffff" height={24} width={24} ariaLabel="loading" />
+              ) : (
+                "Online Payment"
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </div>

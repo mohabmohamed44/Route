@@ -201,12 +201,14 @@ export default function Cart() {
           </table>
         </div>
       )}
-      <Link to="/payment">
-        <button className="h-14 bg-green-500 text-white px-4 py-1.5 rounded hover:bg-green-600 transition-colors text-lg w-full">
-          <i className="mr-4 fa-solid fa-cart-shopping"></i>
-          Go to checkout
-        </button>
-      </Link>
+      <div className="flex flex-col sm:flex-row gap-2 justify-between w-full">
+        <Link to="/payment" className="flex-grow basis-1/2">
+          <button className="h-14 w-full bg-green-500 text-white px-4 py-1.5 rounded hover:bg-green-600 transition-colors text-lg">
+            <i className="mr-4 fa-solid fa-cart-shopping"></i>
+            Go to CheckOut
+          </button>
+        </Link>
+      </div>
       <button
         className="h-14 mt-5 bg-red-500 text-white px-4 py-1.5 rounded hover:bg-red-600 transition-colors text-lg w-full"
         onClick={() => deleteUserCart()}
