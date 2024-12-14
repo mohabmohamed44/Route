@@ -1,52 +1,51 @@
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Package, DollarSign, Calendar, RefreshCw } from 'lucide-react';
 
-// Fetch orders function
-async function fetchOrders() {
-  const token = localStorage.getItem('token');
-  // const userId = localStorage.getItem('userId'); // Get the userId from localStorage
-  
-  if (!token || !userId) {
-    throw new Error('Authentication token or user ID is missing');
+export default function AllOrders() {
+  const [orders, setOrders] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  async function getUserOrders() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      return await axios.get(`https://ecommerce.routemisr.com/api/v1/orders`, {
+        headers: {
+          token,
+        }
+      })
+      .then((res) => {
+        console.log('Orders response:', res.data);
+        const ordersData = res.data.data || res.data || [];
+        setOrders(ordersData);
+        setIsLoading(false);
+        toast.success(`Found ${ordersData.length} orders`);
+      })
+      .catch((err) => {
+        console.error('Full error details:', err);
+        setError(err);
+        setIsLoading(false);
+        if (err.response) {
+          toast.error(err.response.data.message || 'Failed to fetch orders');
+          console.log('Response data:', err.response.data);
+          console.log('Response status:', err.response.status);
+        } else if (err.request) {
+          toast.error('No response from server. Check your connection.');
+        } else {
+          toast.error(err.message || 'An unexpected error occurred');
+        }
+      });
+    } else {
+      setIsLoading(false);
+      toast.error('Authentication token not found');
+    }
   }
 
-  // Dynamically construct the URL using the user ID
-  const { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${token}`, {
-    headers: { token }
-  });
-
-  // Ensure the response is an array
-  return Array.isArray(data) ? data : [];
-};
-
-export default function AllOrders() {
-  const { 
-    data: orders = [], // Default to an empty array
-    isLoading, 
-    isError, 
-    error, 
-    refetch, 
-    isFetching 
-  } = useQuery({
-    queryKey: ['orders'],
-    queryFn: fetchOrders,
-    retry: 2,
-    onSuccess: (data) => {
-      toast.success(`Found ${data.length} orders`);
-    },
-    onError: (error) => {
-      if (error.response) {
-        toast.error(error.response.data.message || 'Failed to fetch orders');
-      } else if (error.request) {
-        toast.error('No response from server. Check your connection.');
-      } else {
-        toast.error(error.message || 'An unexpected error occurred');
-      }
-    }
-  });
+  useEffect(() => {
+    getUserOrders();
+  }, []);
 
   // Loading State
   if (isLoading) {
@@ -63,7 +62,7 @@ export default function AllOrders() {
   }
 
   // Error State
-  if (isError) {
+  if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
         <div className="bg-white shadow-lg rounded-lg p-8 text-center">
@@ -75,7 +74,7 @@ export default function AllOrders() {
             {error.message || 'Unable to retrieve your orders'}
           </p>
           <button
-            onClick={refetch}
+            onClick={getUserOrders}
             className="bg-green-500 text-white px-4 py-2 rounded-lg 
             hover:bg-green-600 transition flex items-center justify-center mx-auto"
           >
@@ -97,15 +96,10 @@ export default function AllOrders() {
               <Package className="mr-4" size={40} />
               <h1 className="text-3xl font-bold">My Orders</h1>
             </div>
-            {isFetching && (
-              <div className="animate-spin">
-                <RefreshCw className="text-white" size={24} />
-              </div>
-            )}
           </div>
 
           {/* Orders Table or Empty State */}
-          {orders.length === 0 ? (
+          {!orders || orders.length === 0 ? (
             <div className="text-center py-12">
               <Package className="mx-auto mb-4 text-gray-400" size={48} />
               <p className="text-xl text-gray-600">
@@ -118,59 +112,52 @@ export default function AllOrders() {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Order ID
+                      Products
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Payment Method
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       <DollarSign className="inline mr-2" size={16} />
-                      Total Price
+                      Order Price
                     </th>
                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      <Calendar className="inline mr-2" size={16} />
-                      Date
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Paid Status
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
+                      Shipping Details
                     </th>
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {orders.map((order) => (
+                  {orders.map((order, index) => (
                     <tr 
-                      key={order._id} 
+                      key={index} 
                       className="hover:bg-gray-50 transition"
                     >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {order._id.slice(-8)}
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {order?.cartItems?.map((product) => (
+                          <div key={product._id} className='flex items-center mb-2'>
+                            <img 
+                              src={product.product.imageCover} 
+                              alt={product.product.title} 
+                              className="w-16 h-16 object-cover mr-4" 
+                            />
+                            <p className="font-semibold">{product.product.title}</p>
+                          </div>
+                        ))}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {order?.paymentMethodType || 'N/A'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-green-600 font-semibold">
-                        ${order.totalOrderPrice.toFixed(2)}
+                        {order?.totalOrderPrice || 0} EGP
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(order.createdAt).toLocaleDateString()}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          order.isPaid 
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-yellow-100 text-yellow-800'
-                        }`}>
-                          {order.isPaid ? 'Paid' : 'Pending'}
+                        Delivering to <span className="text-green-600">
+                          {order?.shippingAddress?.city || 'Unknown City'}
                         </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        <button 
-                          className="text-blue-500 hover:text-blue-700 transition"
-                          onClick={() => {
-                            // TODO: Implement order details view
-                            // navigate(`/order/${order._id}`);
-                            toast.info('Order details coming soon');
-                          }} 
-                        >
-                          View Details
-                        </button>
+                        <br />
+                        Phone: <span className="text-green-600">
+                          {order?.shippingAddress?.phone || 'Not Provided'}
+                        </span>
                       </td>
                     </tr>
                   ))}
