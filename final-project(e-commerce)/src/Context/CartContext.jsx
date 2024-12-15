@@ -182,7 +182,23 @@ export function CartContextProvider({ children }) {
       return false;
     }
   }
-
+  async function getProductsInCustomList(id, listName) {
+    // Check if id or listName is invalid
+    if (!id || !listName) {
+      console.error('Invalid id or listName');
+      return null;  // Return null or an empty value if parameters are invalid
+    }
+  
+    try {
+      const response = await axios.get(`https://ecommerce.routemisr.com/api/v1/products?${listName}=${id}`);
+      return response;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      return null;  // Return null or an empty value in case of an error
+    }
+  }
+  
+  
 
   // get Brand Detail
   async function getBrandDetail(id) {
@@ -191,16 +207,6 @@ export function CartContextProvider({ children }) {
     .catch((error) => error);
   }
 
-  // Payment Functions
-  async function onlinePayment(cartId, shippingAddress) {
-    const url = `${window.location.protocol}//${window.location.host}`;
-    console.log(url);
-    return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${url}`, {
-        shippingAddress: shippingAddress,
-    }, { headers })
-        .then((res) => res)
-        .catch((error) => error);
-  }  
 
   return (
     <cartContext.Provider
@@ -218,7 +224,7 @@ export function CartContextProvider({ children }) {
         wishlistItems,
         getBrandDetail,
         deleteCart,
-        onlinePayment,
+        getProductsInCustomList,
         cartId,
       }}
     >

@@ -56,8 +56,8 @@ export default function Categories() {
         <div className="flex flex-wrap justify-center gap-4">
           {categories.map((category) => (
             <Link
-              key={category.id}
-              to={`/categories/${category.id}`} // Link to the dynamic route
+              key={category._id}
+              to={`/categories/${category._id}`} // Link to the dynamic route
               className="flex flex-col items-center justify-center w-40 p-4 bg-white shadow-md rounded-lg border hover:bg-gray-100"
             >
               <img

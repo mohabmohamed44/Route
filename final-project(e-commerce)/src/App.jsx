@@ -18,7 +18,7 @@ import SpecificBrand from "./Components/SpecificBrand/SpecificBrand";
 import Payment from "./Components/Payment/Payment";
 import AllOrders from "./Components/AllOrders/AllOrders";
 import { UserContextProvider } from "./Context/UserContext";
-import { CartContextProvider } from "./context/CartContext";
+import { CartContextProvider } from "./Context/CartContext";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import toast, { Toaster } from 'react-hot-toast';
 import "./App.css";
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       { path: "products", element: <ProtectedRoute><Products /></ProtectedRoute> },
       { path: "brands", element: <ProtectedRoute><Brands /></ProtectedRoute> },
       { path: "categories", element: <ProtectedRoute><Categories /></ProtectedRoute> },
-      { path: "/categories/:id", element: <ProtectedRoute><CategoryDetails/></ProtectedRoute>},
+      { path: "/categories/:categoryId", element: <ProtectedRoute><CategoryDetails/></ProtectedRoute>},
       { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
       { path: "productDetails/:id/:category", element: <ProtectedRoute><ProductDetails /></ProtectedRoute> },
       { path: "brands/:id", element: <ProtectedRoute><SpecificBrand /></ProtectedRoute> },

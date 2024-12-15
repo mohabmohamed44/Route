@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ghost from "../../assets/ghost-img.png";
 import { Bars } from "react-loader-spinner";
-import { cartContext } from "../../context/CartContext";
+import { cartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 
 // Fetch function to get products
