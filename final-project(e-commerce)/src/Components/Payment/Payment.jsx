@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { cartContext } from "../../context/CartContext";
+import { cartContext } from "../../Context/CartContext";
 import { CreditCard, MapPin, Phone } from "lucide-react";
 import toast from "react-hot-toast";
 import { Bars } from "react-loader-spinner";
@@ -249,7 +249,9 @@ export default function Payment() {
               className="w-1/2 bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading && paymentType === "cash" ? (
+                <div className="flex justify-center items-center">
                 <Bars color="#ffffff" height={24} width={24} ariaLabel="loading" />
+                </div>
               ) : (
                 "Cash Payment"
               )}
@@ -265,7 +267,9 @@ export default function Payment() {
               className="w-1/2 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading && paymentType === "online" ? (
+                <div className="flex justify-center items-center">
                 <Bars color="#ffffff" height={24} width={24} ariaLabel="loading" />
+                </div>
               ) : (
                 "Online Payment"
               )}
