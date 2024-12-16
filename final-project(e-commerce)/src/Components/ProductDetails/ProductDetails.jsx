@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import {Bars} from "react-loader-spinner";
+import { Bars } from "react-loader-spinner";
 import { cartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 
@@ -9,11 +9,25 @@ export default function ProductDetails() {
   const [productDetails, setProductDetails] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [hoveredProduct, setHoveredProduct] = useState(null);
+  const [wishlistProducts, setWishlistProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { id, categoryId } = useParams(); // Correctly destructure params
-  const {addToCart, addToWishlist} = useContext(cartContext);
+  const { id, categoryId } = useParams(); // destructure params
+  const { addToCart, addToWishlist } = useContext(cartContext);
+
+  const handleWishlistClick = (productId) => {
+    if (wishlistProducts.includes(productId)) {
+      setWishlistProducts(wishlistProducts.filter((id) => id !== productId)); // Remove from wishlist
+      toast.error("Product removed from wishlist!");
+    } else {
+      setWishlistProducts([...wishlistProducts, productId]); // Add to wishlist
+      addToWishlist(productId);
+      toast.success("Product added to wishlist!");
+    }
+  };
+
+
   // Fetch product details
   const fetchProductDetails = (productId) => {
     setLoading(true);
@@ -64,7 +78,7 @@ export default function ProductDetails() {
       <div className="flex justify-center items-center h-screen">
         {/* <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-green-500">
         </div> */}
-        <Bars/>
+        <Bars />
       </div>
     );
   }
@@ -130,6 +144,7 @@ export default function ProductDetails() {
             onClick={() => {
               console.log(`Added ${productDetails.title} to cart`);
               addToCart(productDetails);
+              toast.success("Product added to cart!");
             }}
           >
             <i className="fas fa-shopping-cart mr-2"></i>
@@ -140,93 +155,107 @@ export default function ProductDetails() {
 
       {/* Related Products Section */}
       <div className="mt-20">
-  <h2 className="text-2xl font-bold mb-6 text-center">
-    Related Products
-  </h2>
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    {relatedProducts.map((product) => (
-      <div
-        key={product._id}
-        className="relative group border rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow"
-        onMouseEnter={() => setHoveredProduct(product._id)}
-        onMouseLeave={() => setHoveredProduct(null)}
-      >
-        <Link
-          to={`/productDetails/${product._id}/${product.category._id}`}
-          className="block"
-        >
-          <div className="relative">
-            {product.imageCover ? (
-              <img
-                src={product.imageCover}
-                alt={product.title || "Product Image"}
-                className="w-full object-cover h-full rounded"
-              />
-            ) : (
-              <div className="w-full h-40 bg-gray-200 flex items-center justify-center">
-                No Image
-              </div>
-            )}
-            {/* Sale Badge */}
-            {typeof product?.priceAfterDiscount === "number" &&
-              product?.priceAfterDiscount > 0 &&
-              typeof product?.price === "number" &&
-              product?.price > product?.priceAfterDiscount && (
-                <div className="absolute top-2 left-2 bg-red-500 text-white py-1 px-3 rounded-full text-xs font-bold">
-                  Sale
+        <h2 className="text-2xl font-bold mb-6 text-center">
+          Related Products
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {relatedProducts.map((product) => (
+            <div
+              key={product._id}
+              className="relative group border rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow"
+              onMouseEnter={() => setHoveredProduct(product._id)}
+              onMouseLeave={() => setHoveredProduct(null)}
+            >
+              <Link
+                to={`/productDetails/${product._id}/${product.category._id}`}
+                className="block"
+              >
+                <div className="relative">
+                  {product.imageCover ? (
+                    <img
+                      src={product.imageCover}
+                      alt={product.title || "Product Image"}
+                      className="w-full object-cover h-full rounded"
+                    />
+                  ) : (
+                    <div className="w-full h-40 bg-gray-200 flex items-center justify-center">
+                      No Image
+                    </div>
+                  )}
+                  {/* Sale Badge */}
+                  {typeof product?.priceAfterDiscount === "number" &&
+                    product?.priceAfterDiscount > 0 &&
+                    typeof product?.price === "number" &&
+                    product?.price > product?.priceAfterDiscount && (
+                      <div className="absolute top-2 left-2 bg-red-500 text-white py-1 px-3 rounded-full text-xs font-bold">
+                        Sale
+                      </div>
+                    )}
                 </div>
-              )}
-          </div>
-          <div className="mt-4 space-y-2">
-            <h3 className="text-lg font-semibold text-gray-800">
-              {product.title.split(" ", 2).join(" ")}
-            </h3>
-            <p className="text-gray-600 text-sm">{product.category.name}</p>
-            <div className="flex items-center justify-between">
-              {product.priceAfterDiscount ? (
-                <div>
-                  <span className="text-red-500 line-through">
-                    {product.price} EGP
-                  </span>
-                  <span className="text-green-600 font-bold ml-2">
-                    {product.priceAfterDiscount} EGP
-                  </span>
+                <div className="mt-4 space-y-2">
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {product.title.split(" ", 2).join(" ")}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {product.category.name}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    {product.priceAfterDiscount ? (
+                      <div>
+                        <span className="text-red-500 line-through">
+                          {product.price} EGP
+                        </span>
+                        <span className="text-green-600 font-bold ml-2">
+                          {product.priceAfterDiscount} EGP
+                        </span>
+                      </div>
+                    ) : (
+                      <span className="text-green-600 font-bold">
+                        {product.price} EGP
+                      </span>
+                    )}
+                    <div className="flex items-center text-yellow-500">
+                      <i className="fas fa-star"></i>
+                      <span className="text-gray-700 ml-1">
+                        {product.ratingsAverage}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              ) : (
-                <span className="text-green-600 font-bold">
-                  {product.price} EGP
-                </span>
-              )}
-              <div className="flex items-center text-yellow-500">
-                <i className="fas fa-star"></i>
-                <span className="text-gray-700 ml-1">
-                  {product.ratingsAverage}
-                </span>
-              </div>
+              </Link>
+
+              {/* Heart icon button for Wishlist */}
+              <button
+                className={`absolute top-4 right-4 bg-transparent p-2 rounded-full shadow-md hover:shadow-xl transition-opacity duration-300 ${
+                  wishlistProducts.includes(product._id)
+                    ? "text-red-500"
+                    : "text-gray-500"
+                }`}
+                onClick={() => handleWishlistClick(product._id)}
+              >
+                <i
+                  className={`fa-heart ${
+                    wishlistProducts.includes(product._id)
+                      ? "fa-solid" 
+                      : "fa-regular"
+                  }`}
+                ></i>
+              </button>
+
+              {/* Add to Cart button */}
+              <button
+                className="absolute bottom-4 right-4 bg-green-600 text-white py-1 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                onClick={() => {
+                  addToCart(product._id);
+                  toast.success("Product added to cart!");
+                }}
+              >
+                Add to Cart
+              </button>
             </div>
-          </div>
-        </Link>
-        
-        {/* Heart icon button for Wishlist */}
-        <button
-          className="absolute top-4 right-4 bg-transparent p-2 rounded-full shadow-md hover:shadow-xl text-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          onClick={() => addToWishlist(product._id)}
-        >
-          <i className="fas fa-heart"></i>
-        </button>
-
-        {/* Add to Cart button */}
-        <button
-          className="absolute bottom-4 right-4 bg-green-600 text-white py-1 px-3 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          onClick={() => addToCart(product._id)}
-        >
-          Add to Cart
-        </button>
+          ))}
+        </div>
       </div>
-    ))}
-  </div>
-</div>
-
     </div>
   );
 }

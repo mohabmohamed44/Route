@@ -64,7 +64,7 @@ export default function CategoryProducts() {
   }, [categoryId]);
 
   if (isLoading) {
-    return <div className="flex items-center justify-center">
+    return <div className="flex items-center justify-center h-screen">
       <Bars height="80" width="80" ariaLabel="loading-indicator" />
     </div>;
   }
@@ -81,7 +81,7 @@ export default function CategoryProducts() {
     <div className="container mx-auto px-4 py-8 bg-gray-50 min-h-screen">
       <div className="bg-white shadow-lg rounded-lg p-6">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-4xl font-extrabold text-gray-800 tracking-tight">
+          <h2 className="text-2xl font-extrabold text-gray-800 tracking-tight">
             {categoryName} Collection
           </h2>
         </div>
