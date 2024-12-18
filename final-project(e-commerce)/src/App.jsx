@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       { path: "verify", element: <VerifyResetCode/>},
       { path: "reset", element: <ResetPassword/>},
       { path: "update", element: <UpdatePassword/>},
-      { path: "*", element: <Notfound /> },
+      { path: "*", element: <ProtectedRoute><Notfound /></ProtectedRoute> },
     ],
   },
 ]);

@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import Style from "./Cart.module.css";
-import { cartContext } from "../../context/CartContext";
+import { cartContext } from "../../Context/CartContext";
 import ghost from "../../assets/ghost-img.png";
 import { Bars } from "react-loader-spinner";
 import toast from "react-hot-toast";

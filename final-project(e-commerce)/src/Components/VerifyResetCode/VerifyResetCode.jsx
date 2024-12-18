@@ -27,7 +27,7 @@ export default function VerifyResetCode() {
         { resetCode }
       );
       toast.success("Reset code verified successfully!", {
-        position: "bottom-center",
+        position: "top-center",
       });
       setIsResetCodeVerified(true);
       resetForm(); // Clear the reset code fields after submission
@@ -35,7 +35,7 @@ export default function VerifyResetCode() {
       const errorMsg =
         err.response?.data?.message || "Invalid reset code. Please try again.";
       toast.error(errorMsg, {
-        position: "bottom-center",
+        position: "top-center",
       });
     } finally {
       setLoading(false);
