@@ -82,7 +82,7 @@ export default function Cart() {
       </h2>
       {productsCart?.length === 0 ? (
         <div className="text-center mt-10 flex items-center justify-center flex-col">
-          <img src={ghost} className="w-1/2 max-w-md" alt="ghost-img" />
+          <img src={ghost} className="w-1/3 max-w-md" alt="ghost-img" />
           <p className="text-xl font-medium mb-12">Your cart is empty.</p>
         </div>
       ) : (
